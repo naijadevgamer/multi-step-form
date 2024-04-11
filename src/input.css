@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-nav {
+  @apply rounded-[50%] flex items-center justify-center h-[4rem] w-[4rem] mr-6 border border-primary-pastel-blue text-primary-pastel-blue;
+}
+
+.btn-nav--active {
+  @apply bg-primary-light-blue text-primary-marine-blue;
+}
+
+.step {
+  @apply text-primary-pastel-blue;
+}
+.step-name {
+  @apply text-white;
+}
+
+.vk {
+  color: hsl(240, 100%, 86%);
+}

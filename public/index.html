@@ -19,8 +19,68 @@
     <link rel="stylesheet" href="style.css" />
     <title>Multi-step form</title>
   </head>
-  <body class="font-ubuntu">
-    <div class="text-center text-[1.1rem]">
+  <body
+    class="font-ubuntu bg-neutral-magnolia text-[1.6rem] flex justify-center items-center min-h-[100vh]"
+  >
+    <!-- Form card-->
+    <main
+      class="bg-white h-[60rem] max-w-[90rem] w-[90%] p-4 flex rounded-3xl shadow-lg"
+    >
+      <!-- Sidebar  -->
+      <div
+        class="h-full w-[33%] bg-no-repeat bg-cover bg-bottom bg-[url('/images/bg-sidebar-desktop.svg')] rounded-3xl p-16 uppercase"
+      >
+        <!-- Step 1 nav  -->
+        <div class="flex items-center mb-8">
+          <button class="btn-nav btn-nav--active">1</button>
+          <div>
+            <div class="step">Step 1</div>
+            <div class="step-name">Your info</div>
+          </div>
+        </div>
+
+        <!-- Step 2 nav  -->
+        <div class="flex items-center mb-8">
+          <button class="btn-nav">2</button>
+          <div>
+            <div class="step">Step 2</div>
+            <div class="step-name">Select plan</div>
+          </div>
+        </div>
+
+        <!-- Step 3 nav  -->
+        <div class="flex items-center mb-8">
+          <button class="btn-nav">3</button>
+          <div>
+            <div class="step">Step 3</div>
+            <div class="step-name">Add-ons</div>
+          </div>
+        </div>
+
+        <!-- Step 4 nav  -->
+        <div class="flex items-center">
+          <button class="btn-nav">4</button>
+          <div>
+            <div class="step">Step 4</div>
+            <div class="step-name">Summary</div>
+          </div>
+        </div>
+      </div>
+      <!-- <img
+        class="h-full w-[33%]"
+        src="images/bg-sidebar-desktop.svg"
+        alt=""
+        srcset=""
+      /> -->
+
+      <!-- Form  -->
+      <form class="w-[66%] p-20">
+        <h1>Personal info</h1>
+        <p>Please provide your name, email address, and phone number.</p>
+      </form>
+    </main>
+
+    <!-- <div class="text-center text-[1.1rem]">
       Challenge by
       <a
         href="https://www.frontendmentor.io?ref=challenge"
@@ -28,6 +88,6 @@
         class="text-footerLink"
         >Frontend Mentor</a
       >. Coded by <a href="#" class="text-footerLink">Your Name Here</a>.
-    </div>
+    </div> -->
   </body>
 </html>
