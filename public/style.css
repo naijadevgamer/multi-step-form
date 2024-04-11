@@ -554,6 +554,41 @@ video {
   --tw-contain-style:  ;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .font-ubuntu {
   font-family: Ubuntu, sans-serif;
+}
+
+.text-\[1\.1rem\] {
+  font-size: 1.1rem;
+}
+
+.text-html {
+  font-size: 62.5%;
+}
+
+.text-footerLink {
+  --tw-text-opacity: 1;
+  color: hsl(228 45% 44% / var(--tw-text-opacity));
+}
+
+@media not all and (min-width: 1200px) {
+  .max-tl\:text-land {
+    font-size: 58%;
+  }
+}
+
+@media not all and (min-width: 900px) {
+  .max-tp\:text-port {
+    font-size: 53%;
+  }
+}
+
+@media (min-width: 1800px) {
+  .min-\[1800px\]\:text-desktop {
+    font-size: 75%;
+  }
 }
