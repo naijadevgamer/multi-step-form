@@ -40,3 +40,13 @@
 .plan-card--active {
   @apply border-primary-pastel-blue bg-neutral-magnolia;
 }
+
+.btn-switch {
+  @apply w-16 h-9 mx-8 bg-primary-marine-blue rounded-[50px] flex items-center px-1;
+}
+.switch {
+  @apply inline-block rounded-[50%] h-7 w-7 bg-white;
+}
+.switch--yearly {
+  @apply transform translate-x-[100%];
+}

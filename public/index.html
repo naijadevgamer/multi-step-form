@@ -182,18 +182,14 @@
             </div>
             <!-- Plan cards end  -->
 
-            <!-- Plan Switch  start -->
+            <!-- Plan Switch start -->
             <div
               class="flex justify-center items-center p-4 w-full bg-neutral-magnolia rounded-xl"
             >
               <div>Monthly</div>
-              <div
-                class="w-16 h-9 mx-8 bg-primary-marine-blue rounded-[50px] p-[3px]"
-              >
-                <span
-                  class="inline-block rounded-[50%] h-full w-[45%] bg-white"
-                ></span>
-              </div>
+              <button class="btn-switch">
+                <span class="switch switch--yearly"></span>
+              </button>
               <div>Yearly</div>
             </div>
             <!-- Plan Switch end -->
@@ -210,7 +206,11 @@
 
         <!-- Pagination Start  -->
         <div class="pagination flex justify-between items-center mt-auto">
-          <button class="font-bold text-neutral-cool-gray">Go Back</button>
+          <button
+            class="font-bold text-neutral-cool-gray hover:text-primary-marine-blue duration-100"
+          >
+            Go Back
+          </button>
           <button class="btn-next hidden">Confirm</button>
           <button class="btn-next">Next Step</button>
         </div>
