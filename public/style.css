@@ -554,8 +554,28 @@ video {
   --tw-contain-style:  ;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .mb-8 {
   margin-bottom: 2rem;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .flex {
@@ -596,6 +616,10 @@ video {
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .rounded-3xl {
@@ -648,6 +672,16 @@ video {
   font-family: Ubuntu, sans-serif;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .text-\[1\.1rem\] {
   font-size: 1.1rem;
 }
@@ -660,6 +694,14 @@ video {
   font-size: 62.5%;
 }
 
+.font-bold {
+  font-weight: 700;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
@@ -667,6 +709,20 @@ video {
 .text-footerLink {
   --tw-text-opacity: 1;
   color: hsl(228 45% 44% / var(--tw-text-opacity));
+}
+
+.text-neutral-cool-gray {
+  --tw-text-opacity: 1;
+  color: hsl(231 11% 63% / var(--tw-text-opacity));
+}
+
+.text-primary-marine-blue {
+  --tw-text-opacity: 1;
+  color: hsl(213 96% 18% / var(--tw-text-opacity));
+}
+
+.opacity-0 {
+  opacity: 0;
 }
 
 .shadow-lg {
@@ -698,17 +754,56 @@ video {
 }
 
 .step {
+  font-size: 1.4rem;
   --tw-text-opacity: 1;
   color: hsl(228 100% 84% / var(--tw-text-opacity));
 }
 
 .step-name {
+  font-weight: 700;
+  letter-spacing: 0.1em;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.vk {
-  color: hsl(240, 100%, 86%);
+.info-input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: hsl(229 24% 87% / var(--tw-border-opacity));
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  font-weight: 500;
+}
+
+.info-input::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: hsl(231 11% 63% / var(--tw-text-opacity));
+}
+
+.info-input::placeholder {
+  --tw-text-opacity: 1;
+  color: hsl(231 11% 63% / var(--tw-text-opacity));
+}
+
+.info-input:focus {
+  outline-color: hsl(243, 100%, 62%);
+}
+
+.error span {
+  visibility: visible;
+  --tw-text-opacity: 1;
+  color: hsl(354 84% 57% / var(--tw-text-opacity));
+  opacity: 1;
+}
+
+.error input {
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: hsl(354 84% 57% / var(--tw-border-opacity));
 }
 
 @media not all and (min-width: 1200px) {

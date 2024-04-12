@@ -11,12 +11,20 @@
 }
 
 .step {
-  @apply text-primary-pastel-blue;
+  @apply text-primary-pastel-blue text-[1.4rem];
 }
 .step-name {
-  @apply text-white;
+  @apply text-white font-bold tracking-widest;
 }
 
-.vk {
-  color: hsl(240, 100%, 86%);
+.info-input {
+  @apply border border-neutral-light-gray rounded-xl py-4 px-5 w-full focus:outline-primary-purplish-blue placeholder:text-neutral-cool-gray font-medium;
+}
+
+.error span {
+  @apply text-primary-strawberry-red visible opacity-100;
+}
+
+.error input {
+  @apply border border-primary-strawberry-red;
 }
