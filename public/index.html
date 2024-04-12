@@ -133,42 +133,70 @@
         <!-- Select Plan Start-->
         <div class="plan">
           <h1 class="font-bold text-5xl mb-6">Select your plan</h1>
-          <p class="text-neutral-cool-gray mb-10">
+          <p class="text-neutral-cool-gray mb-12">
             You have the option of monthly or yearly billing.
           </p>
 
           <!-- Plans Setting Start -->
           <div>
-            <div class="plans mb-8">
-              <div class="plan-card h-auto w-[30%] p-4 flex flex-col">
+            <!-- Plan cards start -->
+            <div class="plans mb-10 flex justify-between">
+              <!-- Plan 1: Arcade -->
+              <div class="plan-card plan-card--active">
                 <img
-                  class="mb-auto"
+                  class="mb-auto h-16 w-16"
                   src="images/icon-arcade.svg"
                   alt="Arcade icon"
                 />
-                <p>Arcade</p>
-                <p>$9/<span>mo</span></p>
+                <p class="font-bold">Arcade</p>
+                <p class="text-neutral-cool-gray text-2xl">
+                  $9/<span>mo</span>
+                </p>
               </div>
 
-              <div>
-                <img src="" alt="" />
-                <p></p>
-                <span></span>
+              <!-- Plan 2: Advanced -->
+              <div class="plan-card">
+                <img
+                  class="mb-auto h-16 w-16"
+                  src="images/icon-advanced.svg"
+                  alt="Advanced icon"
+                />
+                <p class="font-bold">Advanced</p>
+                <p class="text-neutral-cool-gray text-2xl">
+                  $12/<span>mo</span>
+                </p>
               </div>
 
-              <div>
-                <img src="" alt="" />
-                <p></p>
-                <span></span>
+              <!-- Plan 3: Pro -->
+              <div class="plan-card">
+                <img
+                  class="mb-auto h-16 w-16"
+                  src="images/icon-pro.svg"
+                  alt="Pro icon"
+                />
+                <p class="font-bold">Pro</p>
+                <p class="text-neutral-cool-gray text-2xl">
+                  $15/<span>mo</span>
+                </p>
               </div>
             </div>
+            <!-- Plan cards end  -->
 
-            <!-- Plan Switch  -->
-            <div>
-              <span>Monthly</span>
-              <button><span></span></button>
-              <span>Yearly</span>
+            <!-- Plan Switch  start -->
+            <div
+              class="flex justify-center items-center p-4 w-full bg-neutral-magnolia rounded-xl"
+            >
+              <div>Monthly</div>
+              <div
+                class="w-16 h-9 mx-8 bg-primary-marine-blue rounded-[50px] p-[3px]"
+              >
+                <span
+                  class="inline-block rounded-[50%] h-full w-[45%] bg-white"
+                ></span>
+              </div>
+              <div>Yearly</div>
             </div>
+            <!-- Plan Switch end -->
           </div>
           <!-- Plans Setting end -->
         </div>
