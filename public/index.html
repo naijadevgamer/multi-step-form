@@ -26,7 +26,7 @@
     <main
       class="bg-white h-[60rem] max-w-[90rem] w-[90%] p-4 flex rounded-3xl shadow-lg"
     >
-      <!-- Sidebar  -->
+      <!-- Sidebar  Start-->
       <div
         class="h-full w-[33%] bg-no-repeat bg-cover bg-bottom bg-[url('/images/bg-sidebar-desktop.svg')] rounded-3xl p-16 uppercase"
       >
@@ -66,11 +66,12 @@
           </div>
         </div>
       </div>
+      <!-- Sidebar End-->
 
-      <!-- Form  -->
+      <!-- Form Start-->
       <form class="w-[66%] h-full p-20 text-primary-marine-blue flex flex-col">
-        <!-- Personal info -->
-        <div class="mb-auto">
+        <!-- Personal info Start -->
+        <div class="hidden">
           <h1 class="font-bold text-5xl mb-6">Personal info</h1>
           <p class="text-neutral-cool-gray mb-10">
             Please provide your name, email address, and phone number.
@@ -123,24 +124,71 @@
               type="tel"
               name="tel"
               id="tel"
-              placeholder="e.g. +234 806 150 6782"
+              placeholder="e.g. +234 806 140 0782"
             />
           </div>
         </div>
         <!-- Personal info End -->
 
+        <!-- Select Plan Start-->
+        <div class="plan">
+          <h1 class="font-bold text-5xl mb-6">Select your plan</h1>
+          <p class="text-neutral-cool-gray mb-10">
+            You have the option of monthly or yearly billing.
+          </p>
+
+          <!-- Plans Setting Start -->
+          <div>
+            <div class="plans mb-8">
+              <div class="plan-card h-auto w-[30%] p-4 flex flex-col">
+                <img
+                  class="mb-auto"
+                  src="images/icon-arcade.svg"
+                  alt="Arcade icon"
+                />
+                <p>Arcade</p>
+                <p>$9/<span>mo</span></p>
+              </div>
+
+              <div>
+                <img src="" alt="" />
+                <p></p>
+                <span></span>
+              </div>
+
+              <div>
+                <img src="" alt="" />
+                <p></p>
+                <span></span>
+              </div>
+            </div>
+
+            <!-- Plan Switch  -->
+            <div>
+              <span>Monthly</span>
+              <button><span></span></button>
+              <span>Yearly</span>
+            </div>
+          </div>
+          <!-- Plans Setting end -->
+        </div>
+        <!-- Select Plan End -->
+
+        <!-- Pick add-ons Start-->
+        <!-- Pick add-ons End -->
+
+        <!-- Finish Up Start-->
+        <!-- Finish Up End -->
+
         <!-- Pagination Start  -->
-        <div class="pagination flex justify-between items-center">
+        <div class="pagination flex justify-between items-center mt-auto">
           <button class="font-bold text-neutral-cool-gray">Go Back</button>
-          <!-- <button>Confirm</button> -->
-          <button
-            class="p-4 text-white bg-primary-marine-blue hover:bg-primary-pastel-blue rounded-lg w-48 duration-100"
-          >
-            Next Step
-          </button>
+          <button class="btn-next hidden">Confirm</button>
+          <button class="btn-next">Next Step</button>
         </div>
         <!-- Pagination End  -->
       </form>
+      <!-- Form End-->
     </main>
 
     <!-- <div class="text-center text-[1.1rem]">

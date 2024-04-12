@@ -10,6 +10,10 @@
   @apply bg-primary-light-blue text-primary-marine-blue;
 }
 
+.btn-next {
+  @apply p-4 text-white bg-primary-marine-blue hover:bg-primary-pastel-blue rounded-xl w-48 duration-100;
+}
+
 .step {
   @apply text-primary-pastel-blue text-[1.4rem];
 }
