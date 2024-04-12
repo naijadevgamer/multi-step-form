@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .btn-nav {
-  @apply rounded-[50%] flex items-center justify-center h-[4rem] w-[4rem] mr-6 border border-primary-pastel-blue text-primary-pastel-blue;
+  @apply rounded-[50%] flex items-center justify-center h-[4rem] w-[4rem] mr-6 border border-neutral-light-gray text-white;
 }
 
 .btn-nav--active {
@@ -18,7 +18,7 @@
 }
 
 .info-input {
-  @apply border border-neutral-light-gray rounded-xl py-4 px-5 w-full focus:outline-primary-purplish-blue placeholder:text-neutral-cool-gray font-medium;
+  @apply border border-neutral-light-gray rounded-xl py-4 px-5 w-full focus:outline-primary-pastel-blue placeholder:text-neutral-cool-gray font-medium;
 }
 
 .error span {
