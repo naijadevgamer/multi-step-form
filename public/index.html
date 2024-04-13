@@ -208,7 +208,7 @@
         <!-- Select Plan End -->
 
         <!-- Pick add-ons Start-->
-        <div class="add-ons">
+        <div class="add-ons hidden">
           <h1 class="font-bold text-[3.2rem] mb-6">Pick add-ons</h1>
           <p class="text-neutral-cool-gray mb-12">
             Add-ons help enhance your gaming experience.
@@ -306,18 +306,77 @@
         </div>
         <!-- Pick add-ons End -->
 
-        <!-- Finish Up Start-->
-        <!-- Finish Up End -->
+        <!-- Finishing up Start-->
+        <div class="summary">
+          <h1 class="font-bold text-[3.2rem] mb-6">Finishing up</h1>
+          <p class="text-neutral-cool-gray mb-12">
+            Double-check everything looks OK before confirming.
+          </p>
+
+          <!-- Summary Start -->
+          <div class="bg-neutral-magnolia p-7 rounded-xl">
+            <!-- Plan -->
+            <div class="plan flex justify-between items-center">
+              <ul>
+                <li class="font-bold">
+                  <span>Arcade</span> <span class="month">(Monthly)</span
+                  ><span class="hidden year">(Yearly)</span>
+                </li>
+                <li
+                  class="text-2xl text-neutral-cool-gray underline hover:text-primary-purplish-blue cursor-pointer duration-150"
+                >
+                  Change
+                </li>
+              </ul>
+              <div class="font-bold">$9/mo</div>
+            </div>
+
+            <!-- Line -->
+            <div class="h-[1px] w-full bg-neutral-light-gray my-6"></div>
+
+            <!-- Add-ons -->
+            <ul class="flex justify-between text-2xl font-medium mb-6">
+              <li class="text-neutral-cool-gray">Online service</li>
+              <li>+$1/mo</li>
+            </ul>
+
+            <ul class="flex justify-between text-2xl font-medium mb-6">
+              <li class="text-neutral-cool-gray">Larger storage</li>
+              <li>+$2/mo</li>
+            </ul>
+
+            <ul class="flex justify-between text-2xl font-medium">
+              <li class="text-neutral-cool-gray">Customizable profile</li>
+              <li>+$2/mo</li>
+            </ul>
+          </div>
+          <!-- Summary end -->
+
+          <!-- Total start -->
+          <ul
+            class="p-7 flex justify-between text-2xl font-medium items-center"
+          >
+            <li class="text-neutral-cool-gray">
+              Total (per <span class="month">month</span
+              ><span class="hidden year">year</span>)
+            </li>
+            <li class="text-4xl font-bold text-primary-purplish-blue">
+              +$12/mo
+            </li>
+          </ul>
+          <!-- Total end -->
+        </div>
+        <!-- Finishing up End -->
 
         <!-- Pagination Start  -->
         <div class="pagination flex justify-between items-center mt-auto">
           <button
-            class="font-bold text-neutral-cool-gray hover:text-primary-marine-blue duration-200"
+            class="font-bold text-neutral-cool-gray hover:text-primary-marine-blue duration-150"
           >
             Go Back
           </button>
-          <button class="btn-next hidden">Confirm</button>
-          <button class="btn-next">Next Step</button>
+          <button class="btn-confirm">Confirm</button>
+          <button class="btn-next hidden">Next Step</button>
         </div>
         <!-- Pagination End  -->
       </form>

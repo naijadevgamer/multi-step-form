@@ -558,6 +558,11 @@ video {
   visibility: hidden;
 }
 
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .mb-12 {
   margin-bottom: 3rem;
 }
@@ -606,6 +611,10 @@ video {
   height: 1.5rem;
 }
 
+.h-\[1px\] {
+  height: 1px;
+}
+
 .h-\[60rem\] {
   height: 60rem;
 }
@@ -646,6 +655,10 @@ video {
   max-width: 95rem;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -668,6 +681,15 @@ video {
 
 .rounded-\[50\%\] {
   border-radius: 50%;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.bg-neutral-light-gray {
+  --tw-bg-opacity: 1;
+  background-color: hsl(229 24% 87% / var(--tw-bg-opacity));
 }
 
 .bg-neutral-magnolia {
@@ -704,6 +726,10 @@ video {
   padding: 1rem;
 }
 
+.p-7 {
+  padding: 1.75rem;
+}
+
 .px-32 {
   padding-left: 8rem;
   padding-right: 8rem;
@@ -728,6 +754,11 @@ video {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .text-\[1\.1rem\] {
@@ -783,6 +814,10 @@ video {
   color: hsl(243 100% 62% / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
 .opacity-0 {
   opacity: 0;
 }
@@ -793,8 +828,8 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.duration-200 {
-  transition-duration: 200ms;
+.duration-150 {
+  transition-duration: 150ms;
 }
 
 /* Sidebar  Start*/
@@ -812,7 +847,7 @@ video {
   border-color: hsl(229 24% 87% / var(--tw-border-opacity));
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-  transition-duration: 200ms;
+  transition-duration: 100ms;
 }
 
 .btn-nav:hover {
@@ -852,10 +887,26 @@ video {
   padding: 1rem;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-  transition-duration: 200ms;
+  transition-duration: 100ms;
 }
 
 .btn-next:hover {
+  --tw-bg-opacity: 1;
+  background-color: hsl(228 100% 84% / var(--tw-bg-opacity));
+}
+
+.btn-confirm {
+  width: 12rem;
+  border-radius: 0.75rem;
+  --tw-bg-opacity: 1;
+  background-color: hsl(243 100% 62% / var(--tw-bg-opacity));
+  padding: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  transition-duration: 100ms;
+}
+
+.btn-confirm:hover {
   --tw-bg-opacity: 1;
   background-color: hsl(228 100% 84% / var(--tw-bg-opacity));
 }
@@ -927,7 +978,7 @@ video {
   --tw-border-opacity: 1;
   border-color: hsl(229 24% 87% / var(--tw-border-opacity));
   padding: 1.5rem;
-  transition-duration: 200ms;
+  transition-duration: 100ms;
 }
 
 .plan-card:hover {
@@ -998,7 +1049,7 @@ video {
   --tw-border-opacity: 1;
   border-color: hsl(229 24% 87% / var(--tw-border-opacity));
   padding: 1.75rem;
-  transition-duration: 200ms;
+  transition-duration: 100ms;
 }
 
 .add-on-card:hover {
@@ -1025,38 +1076,36 @@ video {
   padding: 0.5rem;
 }
 
-/* .card--active .check {
-  @apply border-none bg-primary-purplish-blue;
-}
-.card--active .check img {
-  @apply block;
-} */
-
-/* Pick Add-ons Component end*/
-
 .add-on-check:checked + .add-on-card {
   --tw-border-opacity: 1;
   border-color: hsl(228 100% 84% / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: hsl(217 100% 97% / var(--tw-bg-opacity));
-  transition-duration: 200ms;
+  transition-duration: 100ms;
 }
 
 .add-on-check:checked + .add-on-card .check {
   border-style: none;
   --tw-bg-opacity: 1;
   background-color: hsl(243 100% 62% / var(--tw-bg-opacity));
-  transition-duration: 200ms;
+  transition-duration: 100ms;
 }
 
 .add-on-check:checked + .add-on-card .check img {
   opacity: 1;
-  transition-duration: 200ms;
+  transition-duration: 100ms;
 }
+
+/* Pick Add-ons Component end*/
 
 .hover\:text-primary-marine-blue:hover {
   --tw-text-opacity: 1;
   color: hsl(213 96% 18% / var(--tw-text-opacity));
+}
+
+.hover\:text-primary-purplish-blue:hover {
+  --tw-text-opacity: 1;
+  color: hsl(243 100% 62% / var(--tw-text-opacity));
 }
 
 @media not all and (min-width: 1200px) {
