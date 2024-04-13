@@ -2,16 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Sidebar  Start*/
 .btn-nav {
-  @apply rounded-[50%] flex items-center justify-center h-[4rem] w-[4rem] mr-6 border border-neutral-light-gray text-white;
-}
-
-.btn-nav--active {
-  @apply bg-primary-light-blue text-primary-marine-blue;
-}
-
-.btn-next {
-  @apply p-4 text-white bg-primary-marine-blue hover:bg-primary-pastel-blue rounded-xl w-48 duration-100;
+  @apply rounded-[50%] flex items-center justify-center h-[4rem] w-[4rem] mr-6 border border-neutral-light-gray text-white hover:border-white duration-100;
 }
 
 .step {
@@ -20,7 +13,19 @@
 .step-name {
   @apply text-white font-bold tracking-widest;
 }
+/* Sidebar End*/
 
+/* Pagination Start*/
+.btn-nav--active {
+  @apply bg-primary-light-blue text-primary-marine-blue;
+}
+
+.btn-next {
+  @apply p-4 text-white bg-primary-marine-blue hover:bg-primary-pastel-blue rounded-xl w-48 duration-100;
+}
+/* Pagination End*/
+
+/* Personal Info Component Start*/
 .info-input {
   @apply border border-neutral-light-gray rounded-xl py-4 px-5 w-full focus:outline-primary-pastel-blue placeholder:text-neutral-cool-gray font-medium;
 }
@@ -32,12 +37,22 @@
 .error input {
   @apply border border-primary-strawberry-red;
 }
+/* Personal Info Component End */
 
-/* Plan  */
-.plan-card {
-  @apply h-[16rem] w-[31%] p-6 flex flex-col rounded-xl border-2 border-neutral-light-gray hover:border-primary-pastel-blue duration-100 cursor-pointer;
+/* Plans Component Start*/
+.plans--yearly .plan-card .month {
+  @apply hidden;
 }
-.plan-card--active {
+.plans--yearly .plan-card .year {
+  @apply block;
+}
+
+.plan-card {
+  @apply h-auto w-[31%] p-6 flex flex-col rounded-xl border-2 border-neutral-light-gray hover:border-primary-pastel-blue duration-100 cursor-pointer;
+}
+
+.card--active {
+  /* Active for plan and addon cards */
   @apply border-primary-pastel-blue bg-neutral-magnolia;
 }
 
@@ -59,3 +74,11 @@
 .btn-switch {
   @apply w-16 h-8 mx-12 bg-primary-marine-blue rounded-[50px] flex items-center px-1;
 }
+/* Plans Component End*/
+
+/* Pick Add-ons Component Start*/
+.add-on-card {
+  @apply h-auto w-full p-6 flex items-center rounded-xl border-2 border-neutral-light-gray hover:border-primary-pastel-blue duration-100 cursor-pointer;
+}
+
+/* Pick Add-ons Component end*/

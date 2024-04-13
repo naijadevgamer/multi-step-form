@@ -24,7 +24,7 @@
   >
     <!-- Form card-->
     <main
-      class="bg-white h-[60rem] max-w-[90rem] w-[90%] p-4 flex rounded-3xl shadow-lg"
+      class="bg-white h-[60rem] max-w-[95rem] w-[90%] p-4 flex rounded-3xl shadow-lg"
     >
       <!-- Sidebar  Start-->
       <div
@@ -69,11 +69,13 @@
       <!-- Sidebar End-->
 
       <!-- Form Start-->
-      <form class="w-[66%] h-full p-20 text-primary-marine-blue flex flex-col">
+      <form
+        class="w-[66%] h-full pt-14 pb-10 px-32 text-primary-marine-blue flex flex-col"
+      >
         <!-- Personal info Start -->
         <div class="hidden">
-          <h1 class="font-bold text-5xl mb-6">Personal info</h1>
-          <p class="text-neutral-cool-gray mb-10">
+          <h1 class="font-bold text-[3.2rem] mb-6">Personal info</h1>
+          <p class="text-neutral-cool-gray mb-12">
             Please provide your name, email address, and phone number.
           </p>
 
@@ -131,8 +133,8 @@
         <!-- Personal info End -->
 
         <!-- Select Plan Start-->
-        <div class="plan">
-          <h1 class="font-bold text-5xl mb-6">Select your plan</h1>
+        <div class="plan hidden">
+          <h1 class="font-bold text-[3.2rem] mb-6">Select your plan</h1>
           <p class="text-neutral-cool-gray mb-12">
             You have the option of monthly or yearly billing.
           </p>
@@ -140,44 +142,51 @@
           <!-- Plans Setting Start -->
           <div>
             <!-- Plan cards start -->
-            <div class="plans mb-10 flex justify-between">
+            <div class="plans mb-12 flex justify-between plans--yearly">
               <!-- Plan 1: Arcade -->
-              <div class="plan-card plan-card--active">
+              <div class="plan-card card--active">
                 <img
-                  class="mb-auto h-16 w-16"
+                  class="mb-16 h-16 w-16"
                   src="images/icon-arcade.svg"
                   alt="Arcade icon"
                 />
                 <p class="font-bold">Arcade</p>
                 <p class="text-neutral-cool-gray text-2xl">
-                  $9/<span>mo</span>
+                  <span class="month">$9/mo</span>
+                  <span class="hidden year">$90/yr</span>
                 </p>
+                <p class="hidden year text-xl font-medium">2 months free</p>
               </div>
 
               <!-- Plan 2: Advanced -->
               <div class="plan-card">
                 <img
-                  class="mb-auto h-16 w-16"
+                  class="mb-16 h-16 w-16"
                   src="images/icon-advanced.svg"
                   alt="Advanced icon"
                 />
                 <p class="font-bold">Advanced</p>
                 <p class="text-neutral-cool-gray text-2xl">
-                  $12/<span>mo</span>
+                  <span class="month">$12/mo</span>
+                  <span class="hidden year">$120/yr</span>
                 </p>
+                <p class="hidden year text-xl font-medium">2 months free</p>
               </div>
 
               <!-- Plan 3: Pro -->
               <div class="plan-card">
                 <img
-                  class="mb-auto h-16 w-16"
+                  class="mb-16 h-16 w-16"
                   src="images/icon-pro.svg"
                   alt="Pro icon"
                 />
                 <p class="font-bold">Pro</p>
+
                 <p class="text-neutral-cool-gray text-2xl">
-                  $15/<span>mo</span>
+                  <span class="month">$15/mo</span>
+                  <span class="hidden year">$150/yr</span>
                 </p>
+                <p class="hidden year text-xl font-medium">2 months free</p>
               </div>
             </div>
             <!-- Plan cards end  -->
@@ -199,6 +208,48 @@
         <!-- Select Plan End -->
 
         <!-- Pick add-ons Start-->
+        <div class="add-ons">
+          <h1 class="font-bold text-[3.2rem] mb-6">Pick add-ons</h1>
+          <p class="text-neutral-cool-gray mb-12">
+            Add-ons help enhance your gaming experience.
+          </p>
+
+          <!-- Add-ons Start -->
+          <div class="add-ons">
+            <!-- Add-on 1: Online service -->
+
+            <div class="add-on-card card--active">
+              <input
+                type="checkbox"
+                id="online"
+                name="check-online"
+                class="hidden"
+              />
+              <label
+                for="online"
+                class="check check--active h-10 w-10 p-[5px] mr-6 border border-neutral-light-gray rounded-lg bg-primary-purplish-blue"
+                ><img
+                  class="h-full w-full"
+                  src="images/icon-checkmark.svg"
+                  alt="checkmark icon"
+              /></label>
+
+              <div class="mr-auto">
+                <p class="font-bold">Online service</p>
+                <p class="text-neutral-cool-gray text-2xl">
+                  Access to multiplyer games
+                </p>
+              </div>
+
+              <p class="text-primary-pastel-blue">
+                <span class="month">+$1/mo</span>
+                <span class="hidden year">+$10/yr</span>
+              </p>
+            </div>
+            <!-- Add-on 2: Larger storage -->
+            <!-- Add-on 3: Customizable profile -->
+          </div>
+        </div>
         <!-- Pick add-ons End -->
 
         <!-- Finish Up Start-->
