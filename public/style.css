@@ -578,10 +578,6 @@ video {
   margin-bottom: 2rem;
 }
 
-.mr-6 {
-  margin-right: 1.5rem;
-}
-
 .mr-auto {
   margin-right: auto;
 }
@@ -602,10 +598,6 @@ video {
   display: none;
 }
 
-.h-10 {
-  height: 2.5rem;
-}
-
 .h-16 {
   height: 4rem;
 }
@@ -624,10 +616,6 @@ video {
 
 .min-h-\[100vh\] {
   min-height: 100vh;
-}
-
-.w-10 {
-  width: 2.5rem;
 }
 
 .w-16 {
@@ -682,31 +670,9 @@ video {
   border-radius: 50%;
 }
 
-.rounded-xl {
-  border-radius: 0.75rem;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
-.border {
-  border-width: 1px;
-}
-
-.border-neutral-light-gray {
-  --tw-border-opacity: 1;
-  border-color: hsl(229 24% 87% / var(--tw-border-opacity));
-}
-
 .bg-neutral-magnolia {
   --tw-bg-opacity: 1;
   background-color: hsl(217 100% 97% / var(--tw-bg-opacity));
-}
-
-.bg-primary-purplish-blue {
-  --tw-bg-opacity: 1;
-  background-color: hsl(243 100% 62% / var(--tw-bg-opacity));
 }
 
 .bg-white {
@@ -736,22 +702,6 @@ video {
 
 .p-4 {
   padding: 1rem;
-}
-
-.p-\[1px\] {
-  padding: 1px;
-}
-
-.p-\[2px\] {
-  padding: 2px;
-}
-
-.p-\[3px\] {
-  padding: 3px;
-}
-
-.p-\[5px\] {
-  padding: 5px;
 }
 
 .px-32 {
@@ -828,9 +778,9 @@ video {
   color: hsl(213 96% 18% / var(--tw-text-opacity));
 }
 
-.text-primary-pastel-blue {
+.text-primary-purplish-blue {
   --tw-text-opacity: 1;
-  color: hsl(228 100% 84% / var(--tw-text-opacity));
+  color: hsl(243 100% 62% / var(--tw-text-opacity));
 }
 
 .opacity-0 {
@@ -843,8 +793,8 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.duration-100 {
-  transition-duration: 100ms;
+.duration-200 {
+  transition-duration: 200ms;
 }
 
 /* Sidebar  Start*/
@@ -862,7 +812,7 @@ video {
   border-color: hsl(229 24% 87% / var(--tw-border-opacity));
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-  transition-duration: 100ms;
+  transition-duration: 200ms;
 }
 
 .btn-nav:hover {
@@ -902,7 +852,7 @@ video {
   padding: 1rem;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-  transition-duration: 100ms;
+  transition-duration: 200ms;
 }
 
 .btn-next:hover {
@@ -977,7 +927,7 @@ video {
   --tw-border-opacity: 1;
   border-color: hsl(229 24% 87% / var(--tw-border-opacity));
   padding: 1.5rem;
-  transition-duration: 100ms;
+  transition-duration: 200ms;
 }
 
 .plan-card:hover {
@@ -986,7 +936,6 @@ video {
 }
 
 .card--active {
-  /* Active for plan and addon cards */
   --tw-border-opacity: 1;
   border-color: hsl(228 100% 84% / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
@@ -1048,8 +997,8 @@ video {
   border-width: 2px;
   --tw-border-opacity: 1;
   border-color: hsl(229 24% 87% / var(--tw-border-opacity));
-  padding: 1.5rem;
-  transition-duration: 100ms;
+  padding: 1.75rem;
+  transition-duration: 200ms;
 }
 
 .add-on-card:hover {
@@ -1057,7 +1006,53 @@ video {
   border-color: hsl(228 100% 84% / var(--tw-border-opacity));
 }
 
+.add-on-card--yearly .month {
+  display: none;
+}
+
+.add-on-card--yearly .year {
+  display: block;
+}
+
+.check {
+  margin-right: 1.75rem;
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 0.5rem;
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: hsl(229 24% 87% / var(--tw-border-opacity));
+  padding: 0.5rem;
+}
+
+/* .card--active .check {
+  @apply border-none bg-primary-purplish-blue;
+}
+.card--active .check img {
+  @apply block;
+} */
+
 /* Pick Add-ons Component end*/
+
+.add-on-check:checked + .add-on-card {
+  --tw-border-opacity: 1;
+  border-color: hsl(228 100% 84% / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(217 100% 97% / var(--tw-bg-opacity));
+  transition-duration: 200ms;
+}
+
+.add-on-check:checked + .add-on-card .check {
+  border-style: none;
+  --tw-bg-opacity: 1;
+  background-color: hsl(243 100% 62% / var(--tw-bg-opacity));
+  transition-duration: 200ms;
+}
+
+.add-on-check:checked + .add-on-card .check img {
+  opacity: 1;
+  transition-duration: 200ms;
+}
 
 .hover\:text-primary-marine-blue:hover {
   --tw-text-opacity: 1;

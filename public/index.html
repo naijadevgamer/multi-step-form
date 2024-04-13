@@ -217,22 +217,20 @@
           <!-- Add-ons Start -->
           <div class="add-ons">
             <!-- Add-on 1: Online service -->
-
-            <div class="add-on-card card--active">
-              <input
-                type="checkbox"
-                id="online"
-                name="check-online"
-                class="hidden"
-              />
-              <label
-                for="online"
-                class="check check--active h-10 w-10 p-[5px] mr-6 border border-neutral-light-gray rounded-lg bg-primary-purplish-blue"
-                ><img
-                  class="h-full w-full"
+            <input
+              type="checkbox"
+              id="online"
+              name="check-online"
+              class="add-on-check hidden"
+            />
+            <label for="online" class="add-on-card mb-6 add-on-card--yearly">
+              <div class="check">
+                <img
+                  class="h-full w-full opacity-0"
                   src="images/icon-checkmark.svg"
                   alt="checkmark icon"
-              /></label>
+                />
+              </div>
 
               <div class="mr-auto">
                 <p class="font-bold">Online service</p>
@@ -241,13 +239,69 @@
                 </p>
               </div>
 
-              <p class="text-primary-pastel-blue">
+              <p class="text-primary-purplish-blue text-2xl">
                 <span class="month">+$1/mo</span>
                 <span class="hidden year">+$10/yr</span>
               </p>
-            </div>
+            </label>
+
             <!-- Add-on 2: Larger storage -->
+            <input
+              type="checkbox"
+              id="storage"
+              name="check-storage"
+              class="add-on-check hidden"
+            />
+            <label for="storage" class="add-on-card mb-6 add-on-card--yearly">
+              <div class="check">
+                <img
+                  class="h-full w-full opacity-0"
+                  src="images/icon-checkmark.svg"
+                  alt="checkmark icon"
+                />
+              </div>
+
+              <div class="mr-auto">
+                <p class="font-bold">Larger storage</p>
+                <p class="text-neutral-cool-gray text-2xl">
+                  Extra 1TB of cloud save
+                </p>
+              </div>
+
+              <p class="text-primary-purplish-blue text-2xl">
+                <span class="month">+$2/mo</span>
+                <span class="hidden year">+$20/yr</span>
+              </p>
+            </label>
+
             <!-- Add-on 3: Customizable profile -->
+            <input
+              type="checkbox"
+              id="customizable"
+              name="check-customizable"
+              class="add-on-check hidden"
+            />
+            <label for="customizable" class="add-on-card add-on-card--yearly">
+              <div class="check">
+                <img
+                  class="h-full w-full opacity-0"
+                  src="images/icon-checkmark.svg"
+                  alt="checkmark icon"
+                />
+              </div>
+
+              <div class="mr-auto">
+                <p class="font-bold">Customizable Profile</p>
+                <p class="text-neutral-cool-gray text-2xl">
+                  Custom theme on your profile
+                </p>
+              </div>
+
+              <p class="text-primary-purplish-blue text-2xl">
+                <span class="month">+$2/mo</span>
+                <span class="hidden year">+$20/yr</span>
+              </p>
+            </label>
           </div>
         </div>
         <!-- Pick add-ons End -->
@@ -258,7 +312,7 @@
         <!-- Pagination Start  -->
         <div class="pagination flex justify-between items-center mt-auto">
           <button
-            class="font-bold text-neutral-cool-gray hover:text-primary-marine-blue duration-100"
+            class="font-bold text-neutral-cool-gray hover:text-primary-marine-blue duration-200"
           >
             Go Back
           </button>

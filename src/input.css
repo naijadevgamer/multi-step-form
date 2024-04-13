@@ -4,7 +4,7 @@
 
 /* Sidebar  Start*/
 .btn-nav {
-  @apply rounded-[50%] flex items-center justify-center h-[4rem] w-[4rem] mr-6 border border-neutral-light-gray text-white hover:border-white duration-100;
+  @apply rounded-[50%] flex items-center justify-center h-[4rem] w-[4rem] mr-6 border border-neutral-light-gray text-white hover:border-white duration-200;
 }
 
 .step {
@@ -21,7 +21,7 @@
 }
 
 .btn-next {
-  @apply p-4 text-white bg-primary-marine-blue hover:bg-primary-pastel-blue rounded-xl w-48 duration-100;
+  @apply p-4 text-white bg-primary-marine-blue hover:bg-primary-pastel-blue rounded-xl w-48 duration-200;
 }
 /* Pagination End*/
 
@@ -48,11 +48,10 @@
 }
 
 .plan-card {
-  @apply h-auto w-[31%] p-6 flex flex-col rounded-xl border-2 border-neutral-light-gray hover:border-primary-pastel-blue duration-100 cursor-pointer;
+  @apply h-auto w-[31%] p-6 flex flex-col rounded-xl border-2 border-neutral-light-gray hover:border-primary-pastel-blue duration-200 cursor-pointer;
 }
 
 .card--active {
-  /* Active for plan and addon cards */
   @apply border-primary-pastel-blue bg-neutral-magnolia;
 }
 
@@ -77,8 +76,37 @@
 /* Plans Component End*/
 
 /* Pick Add-ons Component Start*/
+
 .add-on-card {
-  @apply h-auto w-full p-6 flex items-center rounded-xl border-2 border-neutral-light-gray hover:border-primary-pastel-blue duration-100 cursor-pointer;
+  @apply h-auto w-full p-7 flex items-center rounded-xl border-2 border-neutral-light-gray hover:border-primary-pastel-blue duration-200 cursor-pointer;
 }
 
+.add-on-card--yearly .month {
+  @apply hidden;
+}
+.add-on-card--yearly .year {
+  @apply block;
+}
+.check {
+  @apply h-9 w-9 p-2 mr-7 border-2 border-neutral-light-gray rounded-lg;
+}
+
+/* .card--active .check {
+  @apply border-none bg-primary-purplish-blue;
+}
+.card--active .check img {
+  @apply block;
+} */
 /* Pick Add-ons Component end*/
+
+.add-on-check:checked + .add-on-card {
+  @apply border-primary-pastel-blue bg-neutral-magnolia duration-200;
+}
+
+.add-on-check:checked + .add-on-card .check {
+  @apply border-none bg-primary-purplish-blue duration-200;
+}
+
+.add-on-check:checked + .add-on-card .check img {
+  @apply opacity-100 duration-200;
+}
