@@ -26,9 +26,9 @@
     <main
       class="bg-white h-[60rem] max-w-[95rem] w-[90%] p-4 flex rounded-3xl shadow-lg"
     >
-      <!-- Sidebar  Start-->
+      <!-- Sidebar Start-->
       <div
-        class="h-full w-[33%] bg-no-repeat bg-cover bg-bottom bg-[url('/images/bg-sidebar-desktop.svg')] rounded-3xl p-16 uppercase"
+        class="h-full w-[33%] bg-no-repeat bg-cover bg-bottom bg-[url('/images/bg-sidebar-desktop.svg')] rounded-3xl p-16 uppercase max-tp:px-6"
       >
         <!-- Step 1 nav  -->
         <div class="flex items-center mb-8">
@@ -70,7 +70,7 @@
 
       <!-- Form Start-->
       <form
-        class="w-[66%] h-full pt-14 pb-10 px-32 text-primary-marine-blue flex flex-col"
+        class="w-[66%] h-full pt-14 pb-10 px-32 text-primary-marine-blue hidden flex-col"
       >
         <!-- Personal info Start -->
         <div class="hidden">
@@ -369,7 +369,8 @@
         <!-- Finishing up End -->
 
         <!-- Pagination Start  -->
-        <div class="pagination flex justify-between items-center mt-auto">
+        <div class="pagination hidden justify-between items-center mt-auto">
+          <!-- flex  -->
           <button
             class="font-bold text-neutral-cool-gray hover:text-primary-marine-blue duration-150"
           >
@@ -381,6 +382,20 @@
         <!-- Pagination End  -->
       </form>
       <!-- Form End-->
+
+      <!-- Confirmation Start  -->
+      <div
+        class="flex flex-col items-center justify-center text-center w-[66%]"
+      >
+        <img class="h-24 w-24 mb-8" src="images/icon-thank-you.svg" alt="" />
+        <h1 class="mb-6 font-bold text-5xl">Thank you!</h1>
+        <p class="w-[70%] text-neutral-cool-gray max-tp:w-[80%]">
+          Thanks for confirming your subscription! We hope you have fun using
+          our platform. If you ever need support, please feel free to email us
+          at support@loremgaming.com.
+        </p>
+      </div>
+      <!-- Confirmation End -->
     </main>
 
     <!-- <div class="text-center text-[1.1rem]">

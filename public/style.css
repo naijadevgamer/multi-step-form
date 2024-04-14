@@ -607,6 +607,10 @@ video {
   height: 4rem;
 }
 
+.h-24 {
+  height: 6rem;
+}
+
 .h-6 {
   height: 1.5rem;
 }
@@ -631,6 +635,10 @@ video {
   width: 4rem;
 }
 
+.w-24 {
+  width: 6rem;
+}
+
 .w-6 {
   width: 1.5rem;
 }
@@ -641,6 +649,10 @@ video {
 
 .w-\[66\%\] {
   width: 66%;
+}
+
+.w-\[70\%\] {
+  width: 70%;
 }
 
 .w-\[90\%\] {
@@ -759,6 +771,11 @@ video {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .text-\[1\.1rem\] {
@@ -1115,6 +1132,24 @@ video {
 }
 
 @media not all and (min-width: 900px) {
+  .max-tp\:w-\[80\%\] {
+    width: 80%;
+  }
+
+  .max-tp\:p-10 {
+    padding: 2.5rem;
+  }
+
+  .max-tp\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .max-tp\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .max-tp\:text-port {
     font-size: 53%;
   }
