@@ -3,10 +3,16 @@
 @tailwind utilities;
 
 /* Sidebar  Start*/
-.btn-nav {
-  @apply rounded-[50%] flex items-center justify-center h-[4rem] w-[4rem] mr-6 border border-neutral-light-gray text-white hover:border-white duration-100;
+.step-wrap {
+  @apply flex items-center  max-p:mb-0 max-p:block;
+}
+.step-wrap:not(:last-child) {
+  @apply mb-8 max-p:mr-6;
 }
 
+.btn-nav {
+  @apply rounded-[50%] flex items-center justify-center h-[4rem] w-[4rem] mr-6 border border-neutral-light-gray text-white hover:border-white duration-100 max-p:mr-0;
+}
 .step {
   @apply text-primary-pastel-blue text-[1.4rem];
 }

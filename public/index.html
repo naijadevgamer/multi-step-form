@@ -20,47 +20,47 @@
     <title>Multi-step form</title>
   </head>
   <body
-    class="font-ubuntu bg-neutral-magnolia text-[1.6rem] flex justify-center items-center min-h-[100vh]"
+    class="font-ubuntu bg-neutral-magnolia text-[1.6rem] flex justify-center min-h-[100vh]"
   >
     <!-- Form card-->
     <main
-      class="bg-white h-[60rem] max-w-[95rem] w-[90%] p-4 flex rounded-3xl shadow-lg"
+      class="bg-white h-[60rem] max-w-[95rem] w-[90%] p-4 flex rounded-3xl shadow-lg my-40 max-p:mt-0 max-p:flex-col max-p:w-full max-p:p-0 max-p:rounded-none max-p:bg-neutral-magnolia max-p:min-h-[100vh] max-p:mb-0 max-p:relative"
     >
-      <!-- Sidebar Start-->
+      <!-- Sidebar Start -->
       <div
-        class="h-full w-[33%] bg-no-repeat bg-cover bg-bottom bg-[url('/images/bg-sidebar-desktop.svg')] rounded-3xl p-16 uppercase max-tp:px-6"
+        class="h-full w-[33%] bg-no-repeat bg-cover bg-bottom bg-[url('/images/bg-sidebar-desktop.svg')] rounded-3xl p-16 uppercase max-tp:px-6 max-p:flex max-p:bg-[url('/images/bg-sidebar-mobile.svg')] max-p:w-full max-p:rounded-none max-p:h-[45vw] max-p:justify-center"
       >
         <!-- Step 1 nav  -->
-        <div class="flex items-center mb-8">
+        <div class="step-wrap">
           <button class="btn-nav btn-nav--active">1</button>
-          <div>
+          <div class="max-p:hidden">
             <div class="step">Step 1</div>
             <div class="step-name">Your info</div>
           </div>
         </div>
 
         <!-- Step 2 nav  -->
-        <div class="flex items-center mb-8">
+        <div class="step-wrap">
           <button class="btn-nav">2</button>
-          <div>
+          <div class="max-p:hidden">
             <div class="step">Step 2</div>
             <div class="step-name">Select plan</div>
           </div>
         </div>
 
         <!-- Step 3 nav  -->
-        <div class="flex items-center mb-8">
+        <div class="step-wrap">
           <button class="btn-nav">3</button>
-          <div>
+          <div class="max-p:hidden">
             <div class="step">Step 3</div>
             <div class="step-name">Add-ons</div>
           </div>
         </div>
 
         <!-- Step 4 nav  -->
-        <div class="flex items-center">
+        <div class="step-wrap">
           <button class="btn-nav">4</button>
-          <div>
+          <div class="max-p:hidden">
             <div class="step">Step 4</div>
             <div class="step-name">Summary</div>
           </div>
@@ -385,7 +385,7 @@
 
       <!-- Confirmation Start  -->
       <div
-        class="flex flex-col items-center justify-center text-center w-[66%]"
+        class="flex flex-col items-center justify-center text-center w-[66%] max-p:absolute max-p:top-48 max-p:w-[91%] max-p:left-1/2 max-p:transform max-p:-translate-x-1/2 max-p:bg-white max-p:min-h-[45rem] max-p:rounded-xl"
       >
         <img class="h-24 w-24 mb-8" src="images/icon-thank-you.svg" alt="" />
         <h1 class="mb-6 font-bold text-5xl">Thank you!</h1>
