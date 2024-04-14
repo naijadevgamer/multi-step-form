@@ -26,7 +26,7 @@ module.exports = {
         html: "62.5%",
         desktop: "75%",
         land: "58%",
-        port: "53%",
+        port: "55%",
       },
       screens: {
         "large-desktop": "1800px", // 1800px

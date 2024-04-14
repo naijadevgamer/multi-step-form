@@ -26,18 +26,21 @@
   @apply bg-primary-light-blue text-primary-marine-blue;
 }
 
-.btn-next {
-  @apply p-4 text-white bg-primary-marine-blue hover:bg-primary-pastel-blue rounded-xl w-48 duration-100;
+.btn-p {
+  @apply p-4 text-white hover:bg-primary-pastel-blue rounded-lg w-48 duration-100;
+}
+.btn-p--next {
+  @apply bg-primary-marine-blue;
 }
 
-.btn-confirm {
-  @apply p-4 text-white bg-primary-purplish-blue hover:bg-primary-pastel-blue rounded-xl w-48 duration-100;
+.btn-p--confirm {
+  @apply bg-primary-purplish-blue;
 }
 
 /* Pagination End*/
 
 .mobile {
-  @apply max-p:absolute max-p:top-48 max-p:w-[91%] max-p:left-1/2 max-p:transform max-p:-translate-x-1/2 max-p:bg-white max-p:min-h-[45rem] max-p:rounded-2xl;
+  @apply max-p:absolute max-p:top-48 max-p:w-[91%] max-p:left-1/2 max-p:transform max-p:-translate-x-1/2 max-p:bg-white max-p:min-h-[45rem] max-p:rounded-2xl max-p:p-10;
 }
 /* Personal Info Component Start*/
 .info-input {
@@ -62,7 +65,10 @@
 }
 
 .plan-card {
-  @apply h-auto w-[31%] p-6 flex flex-col rounded-xl border-2 border-neutral-light-gray hover:border-primary-pastel-blue duration-100 cursor-pointer;
+  @apply h-auto w-[31%] p-6 flex flex-col rounded-xl border-2 border-neutral-light-gray hover:border-primary-pastel-blue duration-100 cursor-pointer max-tp:p-4 max-p:w-full max-p:flex max-p:flex-row;
+}
+.plan-card:not(:last-child) {
+  @apply max-p:mb-5;
 }
 
 .card--active {
@@ -73,6 +79,9 @@
   @apply flex justify-center items-center p-4 w-full bg-neutral-magnolia rounded-xl font-bold;
 }
 
+.btn-switch {
+  @apply w-16 h-8 mx-12 bg-primary-marine-blue rounded-[50px] flex items-center px-[2.5px] max-p:mx-4;
+}
 .yearly :first-child {
   @apply text-neutral-cool-gray;
 }
@@ -81,12 +90,9 @@
 }
 
 .yearly span {
-  @apply transform translate-x-[135%];
+  @apply transform translate-x-[1.95rem];
 }
 
-.btn-switch {
-  @apply w-16 h-8 mx-12 bg-primary-marine-blue rounded-[50px] flex items-center px-1;
-}
 /* Plans Component End*/
 
 /* Pick Add-ons Component Start*/

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
   lang="en"
-  class="text-html max-tp:text-port max-tl:text-land min-[1800px]:text-desktop"
+  class="text-html max-tl:text-land max-tp:text-port min-[1800px]:text-desktop"
 >
   <head>
     <meta charset="UTF-8" />
@@ -70,12 +70,12 @@
 
       <!-- Form Start-->
       <form
-        class="w-[66%] h-full pt-14 pb-10 px-32 text-primary-marine-blue flex-col hidden"
+        class="w-[66%] h-full pt-14 pb-10 px-32 text-primary-marine-blue flex flex-col max-tp:px-16"
       >
         <!-- Personal info Start -->
-        <div class="hidden">
+        <div class="personal-info mobile hidden">
           <h1 class="font-bold text-[3.2rem] mb-6">Personal info</h1>
-          <p class="text-neutral-cool-gray mb-12">
+          <p class="text-neutral-cool-gray mb-12 font-medium">
             Please provide your name, email address, and phone number.
           </p>
 
@@ -133,60 +133,68 @@
         <!-- Personal info End -->
 
         <!-- Select Plan Start-->
-        <div class="plan hidden">
+        <div class="plan mobile">
           <h1 class="font-bold text-[3.2rem] mb-6">Select your plan</h1>
-          <p class="text-neutral-cool-gray mb-12">
+          <p class="text-neutral-cool-gray mb-12 font-medium">
             You have the option of monthly or yearly billing.
           </p>
 
           <!-- Plans Setting Start -->
           <div>
             <!-- Plan cards start -->
-            <div class="plans mb-12 flex justify-between plans--yearly">
+            <div
+              class="plans mb-12 flex justify-between plans--yearly max-p:flex-col"
+            >
               <!-- Plan 1: Arcade -->
               <div class="plan-card card--active">
                 <img
-                  class="mb-16 h-16 w-16"
+                  class="mb-16 h-16 w-16 max-p:mb-0 max-p:mr-6"
                   src="images/icon-arcade.svg"
                   alt="Arcade icon"
                 />
-                <p class="font-bold">Arcade</p>
-                <p class="text-neutral-cool-gray text-2xl">
-                  <span class="month">$9/mo</span>
-                  <span class="hidden year">$90/yr</span>
-                </p>
-                <p class="hidden year text-xl font-medium">2 months free</p>
+                <div>
+                  <p class="font-bold">Arcade</p>
+                  <p class="text-neutral-cool-gray text-2xl">
+                    <span class="month">$9/mo</span>
+                    <span class="hidden year">$90/yr</span>
+                  </p>
+                  <p class="hidden year text-xl font-medium">2 months free</p>
+                </div>
               </div>
 
               <!-- Plan 2: Advanced -->
               <div class="plan-card">
                 <img
-                  class="mb-16 h-16 w-16"
+                  class="mb-16 h-16 w-16 max-p:mb-0 max-p:mr-6"
                   src="images/icon-advanced.svg"
                   alt="Advanced icon"
                 />
-                <p class="font-bold">Advanced</p>
-                <p class="text-neutral-cool-gray text-2xl">
-                  <span class="month">$12/mo</span>
-                  <span class="hidden year">$120/yr</span>
-                </p>
-                <p class="hidden year text-xl font-medium">2 months free</p>
+                <div>
+                  <p class="font-bold">Advanced</p>
+                  <p class="text-neutral-cool-gray text-2xl">
+                    <span class="month">$12/mo</span>
+                    <span class="hidden year">$120/yr</span>
+                  </p>
+                  <p class="hidden year text-xl font-medium">2 months free</p>
+                </div>
               </div>
 
               <!-- Plan 3: Pro -->
               <div class="plan-card">
                 <img
-                  class="mb-16 h-16 w-16"
+                  class="mb-16 h-16 w-16 max-p:mb-0 max-p:mr-6"
                   src="images/icon-pro.svg"
                   alt="Pro icon"
                 />
-                <p class="font-bold">Pro</p>
+                <div>
+                  <p class="font-bold">Pro</p>
 
-                <p class="text-neutral-cool-gray text-2xl">
-                  <span class="month">$15/mo</span>
-                  <span class="hidden year">$150/yr</span>
-                </p>
-                <p class="hidden year text-xl font-medium">2 months free</p>
+                  <p class="text-neutral-cool-gray text-2xl">
+                    <span class="month">$15/mo</span>
+                    <span class="hidden year">$150/yr</span>
+                  </p>
+                  <p class="hidden year text-xl font-medium">2 months free</p>
+                </div>
               </div>
             </div>
             <!-- Plan cards end  -->
@@ -210,7 +218,7 @@
         <!-- Pick add-ons Start-->
         <div class="add-ons hidden">
           <h1 class="font-bold text-[3.2rem] mb-6">Pick add-ons</h1>
-          <p class="text-neutral-cool-gray mb-12">
+          <p class="text-neutral-cool-gray mb-12 font-medium">
             Add-ons help enhance your gaming experience.
           </p>
 
@@ -309,7 +317,7 @@
         <!-- Finishing up Start-->
         <div class="summary hidden">
           <h1 class="font-bold text-[3.2rem] mb-6">Finishing up</h1>
-          <p class="text-neutral-cool-gray mb-12">
+          <p class="text-neutral-cool-gray mb-12 font-medium">
             Double-check everything looks OK before confirming.
           </p>
 
@@ -378,8 +386,8 @@
           >
             Go Back
           </button>
-          <button class="btn-confirm">Confirm</button>
-          <button class="btn-next hidden">Next Step</button>
+          <button class="btn-p btn-p--confirm">Confirm</button>
+          <button class="btn-p btn-p--next hidden">Next Step</button>
         </div>
         <!-- Pagination End  -->
       </form>
@@ -387,7 +395,7 @@
 
       <!-- Confirmation Start  -->
       <div
-        class="flex flex-col items-center justify-center text-center w-[66%] mobile"
+        class="hidden flex-col items-center justify-center text-center w-[66%] mobile"
       >
         <img class="h-24 w-24 mb-8" src="images/icon-thank-you.svg" alt="" />
         <h1 class="mb-6 font-bold text-5xl">Thank you!</h1>
