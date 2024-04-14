@@ -971,6 +971,12 @@ video {
   }
 }
 
+@media not all and (min-width: 300px) {
+  .mobile {
+    padding: 1.5rem;
+  }
+}
+
 /* Personal Info Component Start*/
 
 .info-input {
@@ -1140,6 +1146,13 @@ video {
   border-color: hsl(228 100% 84% / var(--tw-border-opacity));
 }
 
+@media not all and (min-width: 300px) {
+  .add-on-card {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
 .add-on-card--yearly .month {
   display: none;
 }
@@ -1157,6 +1170,12 @@ video {
   --tw-border-opacity: 1;
   border-color: hsl(229 24% 87% / var(--tw-border-opacity));
   padding: 0.5rem;
+}
+
+@media not all and (min-width: 300px) {
+  .check {
+    margin-right: 0.75rem;
+  }
 }
 
 .add-on-check:checked + .add-on-card {
@@ -1240,6 +1259,14 @@ video {
 
   .max-p\:mb-0 {
     margin-bottom: 0px;
+  }
+
+  .max-p\:mb-4 {
+    margin-bottom: 1rem;
+  }
+
+  .max-p\:mb-8 {
+    margin-bottom: 2rem;
   }
 
   .max-p\:mr-6 {

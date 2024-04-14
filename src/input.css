@@ -40,7 +40,7 @@
 /* Pagination End*/
 
 .mobile {
-  @apply max-p:absolute max-p:top-48 max-p:w-[91%] max-p:left-1/2 max-p:transform max-p:-translate-x-1/2 max-p:bg-white max-p:min-h-[45rem] max-p:rounded-2xl max-p:p-10;
+  @apply max-p:absolute max-p:top-48 max-p:w-[91%] max-p:left-1/2 max-p:transform max-p:-translate-x-1/2 max-p:bg-white max-p:min-h-[45rem] max-p:rounded-2xl max-p:p-10 max-sp:p-6;
 }
 /* Personal Info Component Start*/
 .info-input {
@@ -97,7 +97,7 @@
 
 /* Pick Add-ons Component Start*/
 .add-on-card {
-  @apply h-auto w-full p-7 flex items-center rounded-xl border-2 border-neutral-light-gray hover:border-primary-pastel-blue duration-100 cursor-pointer;
+  @apply h-auto w-full p-7 flex items-center rounded-xl border-2 border-neutral-light-gray hover:border-primary-pastel-blue duration-100 cursor-pointer max-sp:px-3;
 }
 
 .add-on-card--yearly .month {
@@ -107,7 +107,7 @@
   @apply block;
 }
 .check {
-  @apply h-9 w-9 p-2 mr-7 border-2 border-neutral-light-gray rounded-lg;
+  @apply h-9 w-9 p-2 mr-7 border-2 border-neutral-light-gray rounded-lg max-sp:mr-3;
 }
 
 .add-on-check:checked + .add-on-card {
