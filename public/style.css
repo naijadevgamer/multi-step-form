@@ -960,7 +960,6 @@ video {
     position: absolute;
     top: 12rem;
     left: 50%;
-    min-height: 45rem;
     width: 91%;
     --tw-translate-x: -50%;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1337,6 +1336,11 @@ video {
 
   .max-p\:p-\[4\.5vw\] {
     padding: 4.5vw;
+  }
+
+  .max-p\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 

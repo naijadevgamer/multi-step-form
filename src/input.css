@@ -40,7 +40,7 @@
 /* Pagination End*/
 
 .mobile {
-  @apply max-p:absolute max-p:top-48 max-p:w-[91%] max-p:left-1/2 max-p:transform max-p:-translate-x-1/2 max-p:bg-white max-p:min-h-[45rem] max-p:rounded-2xl max-p:p-10 max-sp:p-6;
+  @apply max-p:absolute max-p:top-48 max-p:w-[91%] max-p:left-1/2 max-p:transform max-p:-translate-x-1/2 max-p:bg-white max-p:rounded-2xl max-p:p-10 max-sp:p-6;
 }
 /* Personal Info Component Start*/
 .info-input {
