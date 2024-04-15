@@ -955,27 +955,6 @@ video {
 
 /* Pagination End*/
 
-@media not all and (min-width: 600px) {
-  .mobile {
-    position: absolute;
-    top: 12rem;
-    left: 50%;
-    width: 91%;
-    --tw-translate-x: -50%;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    border-radius: 1rem;
-    --tw-bg-opacity: 1;
-    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-    padding: 2.5rem;
-  }
-}
-
-@media not all and (min-width: 300px) {
-  .mobile {
-    padding: 1.5rem;
-  }
-}
-
 /* Personal Info Component Start*/
 
 .info-input {
@@ -1199,6 +1178,27 @@ video {
 
 /* Pick Add-ons Component end*/
 
+@media not all and (min-width: 600px) {
+  .mobile {
+    position: absolute;
+    top: 12rem;
+    left: 50%;
+    width: 91%;
+    --tw-translate-x: -50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    border-radius: 1rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    padding: 2.5rem;
+  }
+}
+
+@media not all and (min-width: 300px) {
+  .mobile {
+    padding: 1.5rem;
+  }
+}
+
 .hover\:text-primary-marine-blue:hover {
   --tw-text-opacity: 1;
   color: hsl(213 96% 18% / var(--tw-text-opacity));
@@ -1292,6 +1292,50 @@ video {
     height: 70rem;
   }
 
+  .max-p\:h-\[80rem\] {
+    height: 80rem;
+  }
+
+  .max-p\:h-\[75rem\] {
+    height: 75rem;
+  }
+
+  .max-p\:h-\[10rem\] {
+    height: 10rem;
+  }
+
+  .max-p\:h-\[30rem\] {
+    height: 30rem;
+  }
+
+  .max-p\:h-\[25rem\] {
+    height: 25rem;
+  }
+
+  .max-p\:h-\[24rem\] {
+    height: 24rem;
+  }
+
+  .max-p\:h-\[26rem\] {
+    height: 26rem;
+  }
+
+  .max-p\:h-\[47vw\] {
+    height: 47vw;
+  }
+
+  .max-p\:h-\[48vw\] {
+    height: 48vw;
+  }
+
+  .max-p\:h-\[50vw\] {
+    height: 50vw;
+  }
+
+  .max-p\:h-\[60vw\] {
+    height: 60vw;
+  }
+
   .max-p\:min-h-\[100vh\] {
     min-height: 100vh;
   }
@@ -1338,9 +1382,27 @@ video {
     padding: 4.5vw;
   }
 
+  .max-p\:p-\[4\.6vw\] {
+    padding: 4.6vw;
+  }
+
   .max-p\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
+  }
+}
+
+@media not all and (min-width: 300px) {
+  .max-sp\:h-\[50vw\] {
+    height: 50vw;
+  }
+
+  .max-sp\:h-\[60vw\] {
+    height: 60vw;
+  }
+
+  .max-sp\:h-\[80rem\] {
+    height: 80rem;
   }
 }
 

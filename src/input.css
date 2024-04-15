@@ -39,9 +39,6 @@
 
 /* Pagination End*/
 
-.mobile {
-  @apply max-p:absolute max-p:top-48 max-p:w-[91%] max-p:left-1/2 max-p:transform max-p:-translate-x-1/2 max-p:bg-white max-p:rounded-2xl max-p:p-10 max-sp:p-6;
-}
 /* Personal Info Component Start*/
 .info-input {
   @apply border border-neutral-light-gray rounded-xl py-4 px-5 w-full focus:outline-primary-pastel-blue placeholder:text-neutral-cool-gray font-medium;
@@ -123,3 +120,7 @@
 }
 
 /* Pick Add-ons Component end*/
+
+.mobile {
+  @apply max-p:absolute max-p:top-48 max-p:w-[91%] max-p:left-1/2 max-p:transform max-p:-translate-x-1/2 max-p:bg-white max-p:rounded-2xl max-p:p-10 max-sp:p-6;
+}
