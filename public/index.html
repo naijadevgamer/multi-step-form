@@ -17,7 +17,7 @@
       href="./assets/images/favicon-32x32.png"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="index.js"></script>
+    <script src="./index.js" defer></script>
     <title>Multi-step form</title>
   </head>
   <body
@@ -387,12 +387,12 @@
         >
           <!-- flex  -->
           <button
-            class="font-bold text-neutral-cool-gray hover:text-primary-marine-blue duration-150"
+            class="font-bold text-neutral-cool-gray hover:text-primary-marine-blue duration-150 prev invisible"
           >
             Go Back
           </button>
-          <button class="btn-p btn-p--confirm">Confirm</button>
-          <button class="btn-p btn-p--next hidden">Next Step</button>
+          <button class="btn-p btn-p--confirm hidden">Confirm</button>
+          <button class="btn-p btn-p--next">Next Step</button>
         </div>
         <!-- Pagination End  -->
       </form>
