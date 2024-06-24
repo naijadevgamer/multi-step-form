@@ -2,6 +2,7 @@
 const nextBtn = document.querySelector(".btn-p--next");
 const prevBtn = document.querySelector(".prev");
 const submitBtn = document.querySelector(".btn-p--confirm");
+const sidebar = document.querySelector(".sidebar");
 let currPage = 1;
 const handlePage = () => {
     // Page 1, and there are other pages
@@ -44,4 +45,14 @@ nextBtn.addEventListener("click", (e) => {
 prevBtn.addEventListener("click", (e) => {
     e.preventDefault();
     handlePrev();
+});
+sidebar.addEventListener("click", (e) => {
+    const target = e.target;
+    if (target && target.nodeName === "BUTTON") {
+        const elNum = target.textContent;
+        if (elNum && ["1", "2", "3", "4"].includes(elNum)) {
+            currPage = +elNum;
+            handlePage();
+        }
+    }
 });

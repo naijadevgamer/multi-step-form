@@ -648,10 +648,6 @@ video {
   width: 1.5rem;
 }
 
-.w-\[33\%\] {
-  width: 33%;
-}
-
 .w-\[66\%\] {
   width: 66%;
 }
@@ -717,26 +713,6 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-\[url\(\'\/images\/bg-sidebar-desktop\.svg\'\)\] {
-  background-image: url('/images/bg-sidebar-desktop.svg');
-}
-
-.bg-cover {
-  background-size: cover;
-}
-
-.bg-bottom {
-  background-position: bottom;
-}
-
-.bg-no-repeat {
-  background-repeat: no-repeat;
-}
-
-.p-16 {
-  padding: 4rem;
 }
 
 .p-4 {
@@ -812,10 +788,6 @@ video {
   font-weight: 500;
 }
 
-.uppercase {
-  text-transform: uppercase;
-}
-
 .text-footerLink {
   --tw-text-opacity: 1;
   color: hsl(228 45% 44% / var(--tw-text-opacity));
@@ -855,6 +827,37 @@ video {
 }
 
 /* Sidebar  Start*/
+
+.sidebar {
+  height: 100%;
+  width: 33%;
+  border-radius: 1.5rem;
+  background-image: url('/images/bg-sidebar-desktop.svg');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  padding: 4rem;
+  text-transform: uppercase;
+}
+
+@media not all and (min-width: 900px) {
+  .sidebar {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media not all and (min-width: 600px) {
+  .sidebar {
+    display: flex;
+    height: 60vw;
+    width: 100%;
+    justify-content: center;
+    border-radius: 0px;
+    background-image: url('/images/bg-sidebar-mobile.svg');
+    background-position: top;
+  }
+}
 
 .step-wrap {
   display: flex;
@@ -1225,11 +1228,6 @@ video {
     padding-right: 4rem;
   }
 
-  .max-tp\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
   .max-tp\:text-port {
     font-size: 55%;
   }
@@ -1276,16 +1274,8 @@ video {
     margin-top: 0px;
   }
 
-  .max-p\:flex {
-    display: flex;
-  }
-
   .max-p\:hidden {
     display: none;
-  }
-
-  .max-p\:h-\[60vw\] {
-    height: 60vw;
   }
 
   .max-p\:h-\[75rem\] {
@@ -1304,10 +1294,6 @@ video {
     flex-direction: column;
   }
 
-  .max-p\:justify-center {
-    justify-content: center;
-  }
-
   .max-p\:rounded-none {
     border-radius: 0px;
   }
@@ -1320,14 +1306,6 @@ video {
   .max-p\:bg-white {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  }
-
-  .max-p\:bg-\[url\(\'\/images\/bg-sidebar-mobile\.svg\'\)\] {
-    background-image: url('/images/bg-sidebar-mobile.svg');
-  }
-
-  .max-p\:bg-top {
-    background-position: top;
   }
 
   .max-p\:p-0 {

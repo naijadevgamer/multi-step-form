@@ -3,6 +3,7 @@ const prevBtn = document.querySelector(".prev") as HTMLButtonElement;
 const submitBtn = document.querySelector(
   ".btn-p--confirm"
 ) as HTMLButtonElement;
+const sidebar = document.querySelector(".sidebar") as HTMLDivElement;
 
 let currPage = 1;
 
@@ -48,4 +49,15 @@ nextBtn.addEventListener("click", (e: Event) => {
 prevBtn.addEventListener("click", (e: Event) => {
   e.preventDefault();
   handlePrev();
+});
+
+sidebar.addEventListener("click", (e: Event) => {
+  const target = e.target as HTMLElement;
+  if (target && target.nodeName === "BUTTON") {
+    const elNum = target.textContent;
+    if (elNum && ["1", "2", "3", "4"].includes(elNum)) {
+      currPage = +elNum;
+      handlePage();
+    }
+  }
 });
