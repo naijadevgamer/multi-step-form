@@ -32,7 +32,16 @@ const handleNext = () => {
         currPage += 1;
     handlePage();
 };
+const handlePrev = () => {
+    if (currPage > 1)
+        currPage -= 1;
+    handlePage();
+};
 nextBtn.addEventListener("click", (e) => {
     e.preventDefault();
     handleNext();
+});
+prevBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    handlePrev();
 });

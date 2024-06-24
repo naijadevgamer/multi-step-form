@@ -35,8 +35,17 @@ const handleNext = (): void => {
   if (currPage < 4) currPage += 1;
   handlePage();
 };
+const handlePrev = (): void => {
+  if (currPage > 1) currPage -= 1;
+  handlePage();
+};
 
-nextBtn.addEventListener<"click">("click", (e: Event) => {
+nextBtn.addEventListener("click", (e: Event) => {
   e.preventDefault();
   handleNext();
+});
+
+prevBtn.addEventListener("click", (e: Event) => {
+  e.preventDefault();
+  handlePrev();
 });
