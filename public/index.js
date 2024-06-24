@@ -46,7 +46,7 @@ prevBtn.addEventListener("click", (e) => {
     e.preventDefault();
     handlePrev();
 });
-sidebar.addEventListener("click", (e) => {
+const handleNavButtonClick = (e) => {
     const target = e.target;
     if (target && target.nodeName === "BUTTON") {
         const elNum = target.textContent;
@@ -55,4 +55,5 @@ sidebar.addEventListener("click", (e) => {
             handlePage();
         }
     }
-});
+};
+sidebar.addEventListener("click", handleNavButtonClick);
