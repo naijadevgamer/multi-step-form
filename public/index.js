@@ -10,6 +10,7 @@ const planForm = document.querySelector(".plan");
 const addOnForm = document.querySelector(".add-ons");
 const summary = document.querySelector(".summary");
 let currPage = 1;
+let hasError;
 // Handle step button active in sidebar
 const handleBtnActive = (num) => {
     navBtns.forEach((e, i) => {
@@ -52,7 +53,6 @@ const handlePageChange = () => {
 const handleStepChange = (e) => {
     const target = e.target;
     if (target && target.nodeName === "BUTTON") {
-        e.preventDefault();
         // Handle next step
         if (target.classList.contains("btn-p--next") && currPage < 4) {
             currPage++;
@@ -67,7 +67,6 @@ const handleStepChange = (e) => {
         }
     }
 };
-pagination.addEventListener("click", handleStepChange);
 // Handles the step changes through sidebar nav click
 const handleSidebarClick = (e) => {
     const target = e.target;
@@ -80,4 +79,84 @@ const handleSidebarClick = (e) => {
         }
     }
 };
-sidebar.addEventListener("click", handleSidebarClick);
+/////////////////////////////////////////
+// PERSONAL INFO FORM VALIDATION
+/*
+const showError = function (msg) {
+  form.classList.remove("item-start");
+  form.classList.add("item-center");
+  formDiv.classList.add("error");
+  errorText.textContent = msg;
+  errorText.classList.remove("hidden");
+  errorIcon.classList.add("opacity-100");
+  errorIcon.classList.remove("opacity-0");
+};
+
+const revertError = function () {
+  form.classList.add("item-start");
+  form.classList.remove("item-center");
+  formDiv.classList.remove("error");
+  errorText.classList.add("hidden");
+  errorIcon.classList.add("opacity-0");
+  errorIcon.classList.remove("opacity-100");
+};
+
+const handleError = function () {
+  const input = document.querySelector("form input");
+  const reg = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
+  // Check if empty
+  if (input.value === "") return showError("Field is empty");
+  // check if valid email
+  if (!reg.test(input.value))
+    return showError("Whoops, make sure it's an email");
+
+  revertError();
+  input.value = "";
+};
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  handleError();
+});*/
+const showError = (msg, el) => {
+    el.closest("div").classList.add("error");
+    el.previousElementSibling.lastElementChild.textContent = msg;
+};
+const revertError = (el) => {
+    el.closest("div").classList.remove("error");
+};
+const handleError = () => {
+    const inputs = document.querySelectorAll("#name, #email, #tel");
+    const inputsArr = Array.from(inputs);
+    inputs.forEach((e) => {
+        const input = e;
+        if (input.value === "")
+            showError("Field is empty", input);
+        else
+            revertError(input);
+    });
+    hasError = inputsArr.some((e) => {
+        var _a;
+        const input = e;
+        if ((_a = input.parentElement) === null || _a === void 0 ? void 0 : _a.classList.contains("error"))
+            return true;
+    });
+};
+pagination.addEventListener("click", (e) => {
+    e.preventDefault();
+    handleError();
+    if (hasError)
+        return;
+    handleStepChange(e);
+});
+sidebar.addEventListener("click", (e) => {
+    handleError();
+    if (hasError)
+        return;
+    handleSidebarClick(e);
+});
+const form = document.querySelector("form");
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+});
