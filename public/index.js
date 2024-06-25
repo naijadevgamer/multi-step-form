@@ -30,63 +30,42 @@ const handlePageChange = () => {
         nextBtn.classList.add("hidden");
     }
 };
-// const handleNext = (): void => {
-//   if (currPage < 4) currPage += 1;
-//   handlePageChange();
-// };
-// const handlePrev = (): void => {
-//   if (currPage > 1) currPage -= 1;
-//   handlePageChange();
-// };
 const handlePagination = (e) => {
     const target = e.target;
     // if (target && target.nodeName === "BUTTON") {
     e.preventDefault();
     // Handle next step
-    if (target.classList.contains("btn-p--next")) {
+    if (target.classList.contains("btn-p--next") && currPage < 4) {
         currPage++;
+        handleBtnActive(currPage);
         handlePageChange();
     }
     // Handle prev step
-    if (target.classList.contains("prev")) {
+    if (target.classList.contains("prev") && currPage > 1) {
         currPage--;
+        handleBtnActive(currPage);
         handlePageChange();
     }
-    // Handle Submit
-    // if (target.textContent === "Confirm")
 };
 pagination.addEventListener("click", handlePagination);
-// nextBtn.addEventListener("click", (e: Event) => {
-//   e.preventDefault();
-//   handleNext();
-// });
-// prevBtn.addEventListener("click", (e: Event) => {
-//   e.preventDefault();
-//   handlePrev();
-// });
-// const handleBtnActive = (e) => {
-//   navBtns.forEach((el) => {
-//     const ele = el as HTMLButtonElement;
-//     ele.classList.remove("btn-nav--active");
-//   });
-// };
+const handleBtnActive = (num) => {
+    navBtns.forEach((e, i) => {
+        const el = e;
+        if (i === num - 1)
+            el.classList.add("btn-nav--active");
+        else
+            el.classList.remove("btn-nav--active");
+    });
+};
 const handleNavButtonClick = (e) => {
     const target = e.target;
     if (target && target.nodeName === "BUTTON") {
         const elNum = target.textContent;
         if (elNum && ["1", "2", "3", "4"].includes(elNum)) {
             currPage = +elNum;
+            handleBtnActive(currPage);
             handlePageChange();
         }
     }
-    const clicked = target.closest(".btn-nav");
-    // Matching strategy
-    if (!clicked)
-        return;
-    navBtns.forEach((e) => {
-        const el = e;
-        el.classList.remove("btn-nav--active");
-    });
-    clicked.classList.add("btn-nav--active");
 };
 sidebar.addEventListener("click", handleNavButtonClick);
