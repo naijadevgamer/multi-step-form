@@ -90,46 +90,6 @@ const handleSidebarClick = (e: Event) => {
 
 /////////////////////////////////////////
 // PERSONAL INFO FORM VALIDATION
-
-/*
-const showError = function (msg) {
-  form.classList.remove("item-start");
-  form.classList.add("item-center");
-  formDiv.classList.add("error");
-  errorText.textContent = msg;
-  errorText.classList.remove("hidden");
-  errorIcon.classList.add("opacity-100");
-  errorIcon.classList.remove("opacity-0");
-};
-
-const revertError = function () {
-  form.classList.add("item-start");
-  form.classList.remove("item-center");
-  formDiv.classList.remove("error");
-  errorText.classList.add("hidden");
-  errorIcon.classList.add("opacity-0");
-  errorIcon.classList.remove("opacity-100");
-};
-
-const handleError = function () {
-  const input = document.querySelector("form input");
-  const reg = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-
-  // Check if empty
-  if (input.value === "") return showError("Field is empty");
-  // check if valid email
-  if (!reg.test(input.value))
-    return showError("Whoops, make sure it's an email");
-
-  revertError();
-  input.value = "";
-};
-
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-  handleError();
-});*/
-
 const showError = (msg: string, el: any) => {
   el.closest("div").classList.add("error");
   el.previousElementSibling.lastElementChild.textContent = msg;
