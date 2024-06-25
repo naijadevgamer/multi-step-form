@@ -137,35 +137,65 @@ const showError = (msg: string, el: any) => {
 const revertError = (el: any) => {
   el.closest("div").classList.remove("error");
 };
-
+const inputs = document.querySelectorAll("#name, #email, #tel") as NodeList;
 const handleError = () => {
-  const inputs = document.querySelectorAll("#name, #email, #tel") as NodeList;
   const inputsArr = Array.from(inputs);
+  const fullNameRegex = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+  const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+  const phoneNumberRegex = /^\+?[1-9]\d{1,14}$/;
 
-  inputs.forEach((e) => {
+  const regexArr = [fullNameRegex, emailRegex, phoneNumberRegex];
+
+  inputs.forEach((e, i) => {
     const input = e as HTMLInputElement;
-    if (input.value === "") showError("Field is empty", input);
+    // Check if empty
+    if (input.value === "") return showError("Field is empty", input);
     else revertError(input);
+
+    // Check if input is valid
+    if (!regexArr[i].test(input.value)) {
+      if (i === 0) {
+        return showError("Make sure it's a full name", input);
+      }
+      if (i === 1) {
+        return showError("Whoops, make sure it's an email", input);
+      }
+      if (i === 2) {
+        return showError("Make sure it's a phone number", input);
+      }
+    } else revertError(input);
   });
+
+  // Update hasError
   hasError = inputsArr.some((e) => {
     const input = e as HTMLInputElement;
     if (input.parentElement?.classList.contains("error")) return true;
   });
 };
 
+const checkErrorOnChange = () => {
+  inputs.forEach((e) => {
+    const input = e as HTMLInputElement;
+    input.addEventListener("change", handleError);
+  });
+};
+
 pagination.addEventListener("click", (e) => {
   e.preventDefault();
   handleError();
+  checkErrorOnChange();
   if (hasError) return;
   handleStepChange(e);
 });
 
 sidebar.addEventListener("click", (e) => {
   handleError();
+  checkErrorOnChange();
   if (hasError) return;
   handleSidebarClick(e);
 });
 
+// Prevent default submission
 const form = document.querySelector("form") as HTMLFormElement;
 
 form.addEventListener("submit", (e) => {

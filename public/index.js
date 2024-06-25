@@ -126,16 +126,36 @@ const showError = (msg, el) => {
 const revertError = (el) => {
     el.closest("div").classList.remove("error");
 };
+const inputs = document.querySelectorAll("#name, #email, #tel");
 const handleError = () => {
-    const inputs = document.querySelectorAll("#name, #email, #tel");
     const inputsArr = Array.from(inputs);
-    inputs.forEach((e) => {
+    const fullNameRegex = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+    const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    const phoneNumberRegex = /^\+?[1-9]\d{1,14}$/;
+    const regexArr = [fullNameRegex, emailRegex, phoneNumberRegex];
+    inputs.forEach((e, i) => {
         const input = e;
+        // Check if empty
         if (input.value === "")
-            showError("Field is empty", input);
+            return showError("Field is empty", input);
+        else
+            revertError(input);
+        // Check if input is valid
+        if (!regexArr[i].test(input.value)) {
+            if (i === 0) {
+                return showError("Make sure it's a full name", input);
+            }
+            if (i === 1) {
+                return showError("Whoops, make sure it's an email", input);
+            }
+            if (i === 2) {
+                return showError("Make sure it's a phone number", input);
+            }
+        }
         else
             revertError(input);
     });
+    // Update hasError
     hasError = inputsArr.some((e) => {
         var _a;
         const input = e;
@@ -143,19 +163,28 @@ const handleError = () => {
             return true;
     });
 };
+const checkErrorOnChange = () => {
+    inputs.forEach((e) => {
+        const input = e;
+        input.addEventListener("change", handleError);
+    });
+};
 pagination.addEventListener("click", (e) => {
     e.preventDefault();
     handleError();
+    checkErrorOnChange();
     if (hasError)
         return;
     handleStepChange(e);
 });
 sidebar.addEventListener("click", (e) => {
     handleError();
+    checkErrorOnChange();
     if (hasError)
         return;
     handleSidebarClick(e);
 });
+// Prevent default submission
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
