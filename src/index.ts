@@ -27,7 +27,6 @@ const handleBtnActive = (num: number) => {
 
 // Change the step of the form
 const handlePageChange = (): void => {
-  // Page 1, and there are other pages
   console.log(currPage);
 
   // Manipulate pagination display classes
@@ -60,34 +59,36 @@ const handlePageChange = (): void => {
 // Handles the step changes through next or prev button click
 const handleStepChange = (e: Event): void => {
   const target = e.target as HTMLElement;
-  if (target && target.nodeName === "BUTTON") {
-    // Handle next step
-    if (target.classList.contains("btn-p--next") && currPage < 4) {
-      currPage++;
-      handleBtnActive(currPage);
-      handlePageChange();
-    }
 
-    // Handle prev step
-    if (target.classList.contains("prev") && currPage > 1) {
-      currPage--;
-      handleBtnActive(currPage);
-      handlePageChange();
-    }
+  // Matching strategy
+  if (target.nodeName !== "BUTTON") return;
+
+  // Handle next step
+  if (target.classList.contains("btn-p--next") && currPage < 4) {
+    currPage++;
+    handleBtnActive(currPage);
+    handlePageChange();
+  }
+
+  // Handle prev step
+  if (target.classList.contains("prev") && currPage > 1) {
+    currPage--;
+    handleBtnActive(currPage);
+    handlePageChange();
   }
 };
 
 // Handles the step changes through sidebar nav click
-const handleSidebarClick = (e: Event) => {
+const handleSidebarNav = (e: Event) => {
   const target = e.target as HTMLElement;
-  if (target && target.nodeName === "BUTTON") {
-    const elNum = target.textContent;
-    if (elNum && ["1", "2", "3", "4"].includes(elNum)) {
-      currPage = +elNum;
-      handleBtnActive(currPage);
-      handlePageChange();
-    }
-  }
+  const clicked = target.closest(".btn-nav");
+
+  // Matching strategy
+  if (!clicked) return;
+
+  if (clicked.textContent) currPage = +clicked.textContent;
+  handleBtnActive(currPage);
+  handlePageChange();
 };
 
 /////////////////////////////////////////
@@ -144,9 +145,9 @@ const checkErrorOnChange = () => {
 
 pagination.addEventListener("click", (e) => {
   e.preventDefault();
-  // handleError();
-  // checkErrorOnChange();
-  // if (hasError) return;
+  handleError();
+  checkErrorOnChange();
+  if (hasError) return;
   handleStepChange(e);
 });
 
@@ -154,7 +155,7 @@ sidebar.addEventListener("click", (e) => {
   handleError();
   checkErrorOnChange();
   if (hasError) return;
-  handleSidebarClick(e);
+  handleSidebarNav(e);
 });
 
 // Prevent default submission
