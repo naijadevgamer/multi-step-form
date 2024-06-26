@@ -4,10 +4,12 @@ const submitBtn = document.querySelector(
   ".btn-p--confirm"
 ) as HTMLButtonElement;
 const navBtns = document.querySelectorAll(".btn-nav") as NodeList;
+
 const pagination = document.querySelector(".pagination") as HTMLDivElement;
 const sidebar = document.querySelector(".sidebar") as HTMLDivElement;
 const infoForm = document.querySelector(".personal-info") as HTMLDivElement;
 const planForm = document.querySelector(".plan") as HTMLDivElement;
+const plans = document.querySelector(".plans") as HTMLDivElement;
 const addOnForm = document.querySelector(".add-ons") as HTMLDivElement;
 const summary = document.querySelector(".summary") as HTMLDivElement;
 
@@ -142,9 +144,9 @@ const checkErrorOnChange = () => {
 
 pagination.addEventListener("click", (e) => {
   e.preventDefault();
-  handleError();
-  checkErrorOnChange();
-  if (hasError) return;
+  // handleError();
+  // checkErrorOnChange();
+  // if (hasError) return;
   handleStepChange(e);
 });
 
@@ -161,3 +163,23 @@ const form = document.querySelector("form") as HTMLFormElement;
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
+
+/////////////////////////////////////////
+// SELECT PLAN FUNCTIONALITY
+const handlePlanSelection = (e: Event) => {
+  const target = e.target as HTMLElement;
+  const clicked = target.closest(".plan-card");
+
+  // Matching strategy
+  if (!clicked) return;
+
+  // Remove active classes
+  document.querySelectorAll(".plan-card").forEach((card) => {
+    card.classList.remove("card--active");
+  });
+
+  // Add active class to target
+  clicked.classList.add("card--active");
+};
+
+plans.addEventListener("click", handlePlanSelection);

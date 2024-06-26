@@ -7,6 +7,7 @@ const pagination = document.querySelector(".pagination");
 const sidebar = document.querySelector(".sidebar");
 const infoForm = document.querySelector(".personal-info");
 const planForm = document.querySelector(".plan");
+const plans = document.querySelector(".plans");
 const addOnForm = document.querySelector(".add-ons");
 const summary = document.querySelector(".summary");
 let currPage = 1;
@@ -133,10 +134,9 @@ const checkErrorOnChange = () => {
 };
 pagination.addEventListener("click", (e) => {
     e.preventDefault();
-    handleError();
-    checkErrorOnChange();
-    if (hasError)
-        return;
+    // handleError();
+    // checkErrorOnChange();
+    // if (hasError) return;
     handleStepChange(e);
 });
 sidebar.addEventListener("click", (e) => {
@@ -151,3 +151,19 @@ const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 });
+/////////////////////////////////////////
+// SELECT PLAN FUNCTIONALITY
+const handlePlanSelection = (e) => {
+    const target = e.target;
+    const clicked = target.closest(".plan-card");
+    // Matching strategy
+    if (!clicked)
+        return;
+    // Remove active classes
+    document.querySelectorAll(".plan-card").forEach((card) => {
+        card.classList.remove("card--active");
+    });
+    // Add active class to target
+    clicked.classList.add("card--active");
+};
+plans.addEventListener("click", handlePlanSelection);
