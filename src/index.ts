@@ -40,9 +40,9 @@ const handlePageChange = (): void => {
   addOnForm.classList.add("hidden");
   summary.classList.add("hidden");
 
-  // Match changes
+  // Show current form step
   if (currPage === 1) {
-    prevBtn.classList.add("invisible");
+    prevBtn.classList.add("invisible"); // Button
     infoForm.classList.remove("hidden");
   }
   if (currPage === 2) planForm.classList.remove("hidden");
@@ -50,19 +50,14 @@ const handlePageChange = (): void => {
   if (currPage === 3) addOnForm.classList.remove("hidden");
 
   if (currPage === 4) {
-    submitBtn.classList.remove("hidden");
-    nextBtn.classList.add("hidden");
+    submitBtn.classList.remove("hidden"); // Button
+    nextBtn.classList.add("hidden"); // Button
     summary.classList.remove("hidden");
   }
 };
 
 // Handles the step changes through next or prev button click
-const handleStepChange = (e: Event): void => {
-  const target = e.target as HTMLElement;
-
-  // Matching strategy
-  if (target.nodeName !== "BUTTON") return;
-
+const handleStepChange = (target: HTMLElement): void => {
   // Handle next step
   if (target.classList.contains("btn-p--next") && currPage < 4) {
     currPage++;
@@ -79,14 +74,9 @@ const handleStepChange = (e: Event): void => {
 };
 
 // Handles the step changes through sidebar nav click
-const handleSidebarNav = (e: Event) => {
-  const target = e.target as HTMLElement;
-  const clicked = target.closest(".btn-nav");
-
-  // Matching strategy
-  if (!clicked) return;
-
-  if (clicked.textContent) currPage = +clicked.textContent;
+const handleSidebarNav = (navBtn: HTMLButtonElement) => {
+  // Update current form step base on the button value
+  if (navBtn.textContent) currPage = +navBtn.textContent;
   handleBtnActive(currPage);
   handlePageChange();
 };
@@ -136,6 +126,7 @@ const handleError = () => {
   });
 };
 
+// Continue to check for when personal info input values are changed or edited
 const checkErrorOnChange = () => {
   inputs.forEach((e) => {
     const input = e as HTMLInputElement;
@@ -143,19 +134,26 @@ const checkErrorOnChange = () => {
   });
 };
 
+// Handle the event on next and prev buttons
 pagination.addEventListener("click", (e) => {
+  const target = e.target as HTMLElement;
+  if (target.nodeName !== "BUTTON") return; // Matching strategy
   e.preventDefault();
   handleError();
   checkErrorOnChange();
   if (hasError) return;
-  handleStepChange(e);
+  handleStepChange(target);
 });
 
+// Handle the event on nav button click in the sidebar
 sidebar.addEventListener("click", (e) => {
+  const target = e.target as HTMLElement;
+  const clicked = target.closest(".btn-nav") as HTMLButtonElement;
+  if (!clicked) return; // Matching strategy
   handleError();
   checkErrorOnChange();
   if (hasError) return;
-  handleSidebarNav(e);
+  handleSidebarNav(clicked);
 });
 
 // Prevent default submission
