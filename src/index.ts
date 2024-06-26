@@ -83,59 +83,61 @@ const handleSidebarNav = (navBtn: HTMLButtonElement) => {
 
 /////////////////////////////////////////
 // PERSONAL INFO FORM VALIDATION
-const showError = (msg: string, el: any) => {
-  el.closest("div").classList.add("error");
-  el.previousElementSibling.lastElementChild.textContent = msg;
+const showError = (msg: string, el: HTMLInputElement) => {
+  const inputContainer = el.closest("div");
+  if (inputContainer) {
+    inputContainer.classList.add("error");
+    const errorMsgElement = inputContainer.querySelector("span");
+    if (errorMsgElement) errorMsgElement.textContent = msg;
+  }
 };
-const revertError = (el: any) => {
-  el.closest("div").classList.remove("error");
+
+const revertError = (el: HTMLInputElement) => {
+  const inputContainer = el.closest("div");
+  if (inputContainer) {
+    inputContainer.classList.remove("error");
+  }
 };
-const inputs = document.querySelectorAll("#name, #email, #tel") as NodeList;
+
+const inputs = document.querySelectorAll<HTMLInputElement>(
+  "#name, #email, #tel"
+);
+
 const handleError = () => {
-  const inputsArr = Array.from(inputs);
   const fullNameRegex = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
   const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
   const phoneNumberRegex = /^\+?[1-9]\d{1,14}$/;
 
   const regexArr = [fullNameRegex, emailRegex, phoneNumberRegex];
 
-  inputs.forEach((e, i) => {
-    const input = e as HTMLInputElement;
+  inputs.forEach((input, i) => {
     // Check if empty
     if (input.value === "") return showError("Field is empty", input);
     else revertError(input);
 
     // Check if input is valid
     if (!regexArr[i].test(input.value)) {
-      if (i === 0) {
-        return showError("Make sure it's a full name", input);
-      }
-      if (i === 1) {
-        return showError("Whoops, make sure it's an email", input);
-      }
-      if (i === 2) {
-        return showError("Make sure it's a phone number", input);
-      }
+      if (i === 0) showError("Make sure it's a full name", input);
+      if (i === 1) showError("Whoops, make sure it's an email", input);
+      if (i === 2) showError("Make sure it's a phone number", input);
     } else revertError(input);
   });
 
   // Update hasError
-  hasError = inputsArr.some((e) => {
-    const input = e as HTMLInputElement;
-    if (input.parentElement?.classList.contains("error")) return true;
-  });
+  hasError = Array.from(inputs).some(
+    (input) => input.closest("div")?.classList.contains("error") || false
+  );
 };
 
 // Continue to check for when personal info input values are changed or edited
 const checkErrorOnChange = () => {
-  inputs.forEach((e) => {
-    const input = e as HTMLInputElement;
+  inputs.forEach((input) => {
     input.addEventListener("change", handleError);
   });
 };
 
 // Handle the event on next and prev buttons
-pagination.addEventListener("click", (e) => {
+pagination.addEventListener<"click">("click", (e: MouseEvent) => {
   const target = e.target as HTMLElement;
   if (target.nodeName !== "BUTTON") return; // Matching strategy
   e.preventDefault();
@@ -146,7 +148,7 @@ pagination.addEventListener("click", (e) => {
 });
 
 // Handle the event on nav button click in the sidebar
-sidebar.addEventListener("click", (e) => {
+sidebar.addEventListener<"click">("click", (e: MouseEvent) => {
   const target = e.target as HTMLElement;
   const clicked = target.closest(".btn-nav") as HTMLButtonElement;
   if (!clicked) return; // Matching strategy
@@ -157,11 +159,9 @@ sidebar.addEventListener("click", (e) => {
 });
 
 // Prevent default submission
-const form = document.querySelector("form") as HTMLFormElement;
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
+document
+  .querySelector("form")
+  ?.addEventListener("submit", (e) => e.preventDefault());
 
 /////////////////////////////////////////
 // SELECT PLAN FUNCTIONALITY
