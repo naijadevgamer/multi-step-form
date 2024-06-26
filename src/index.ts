@@ -4,12 +4,15 @@ const submitBtn = document.querySelector(
   ".btn-p--confirm"
 ) as HTMLButtonElement;
 const navBtns = document.querySelectorAll(".btn-nav") as NodeList;
+const addOnCards = document.querySelectorAll<HTMLLabelElement>(".add-on-card");
 
 const pagination = document.querySelector(".pagination") as HTMLDivElement;
 const sidebar = document.querySelector(".sidebar") as HTMLDivElement;
 const infoForm = document.querySelector(".personal-info") as HTMLDivElement;
 const planForm = document.querySelector(".plan") as HTMLDivElement;
 const plans = document.querySelector(".plans") as HTMLDivElement;
+const switchParent = document.querySelector(".option-switch") as HTMLDivElement;
+const switchBtn = document.querySelector(".btn-switch") as HTMLButtonElement;
 const addOnForm = document.querySelector(".add-ons") as HTMLDivElement;
 const summary = document.querySelector(".summary") as HTMLDivElement;
 
@@ -141,9 +144,9 @@ pagination.addEventListener<"click">("click", (e: MouseEvent) => {
   const target = e.target as HTMLElement;
   if (target.nodeName !== "BUTTON") return; // Matching strategy
   e.preventDefault();
-  handleError();
-  checkErrorOnChange();
-  if (hasError) return;
+  // handleError();
+  // checkErrorOnChange();
+  // if (hasError) return;
   handleStepChange(target);
 });
 
@@ -182,3 +185,15 @@ const handlePlanSelection = (e: Event) => {
 };
 
 plans.addEventListener("click", handlePlanSelection);
+
+// Handle plan period switch
+const handlePlanPeriodSwitch = (e: Event) => {
+  e.preventDefault();
+  switchParent.classList.toggle("yearly");
+  plans.classList.toggle("plans--yearly");
+  addOnCards.forEach((addOnCard) => {
+    addOnCard.classList.toggle("add-on-card--yearly");
+  });
+};
+
+switchBtn.addEventListener("click", handlePlanPeriodSwitch);

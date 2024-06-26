@@ -4,11 +4,14 @@ const nextBtn = document.querySelector(".btn-p--next");
 const prevBtn = document.querySelector(".prev");
 const submitBtn = document.querySelector(".btn-p--confirm");
 const navBtns = document.querySelectorAll(".btn-nav");
+const addOnCards = document.querySelectorAll(".add-on-card");
 const pagination = document.querySelector(".pagination");
 const sidebar = document.querySelector(".sidebar");
 const infoForm = document.querySelector(".personal-info");
 const planForm = document.querySelector(".plan");
 const plans = document.querySelector(".plans");
+const switchParent = document.querySelector(".option-switch");
+const switchBtn = document.querySelector(".btn-switch");
 const addOnForm = document.querySelector(".add-ons");
 const summary = document.querySelector(".summary");
 let currPage = 1;
@@ -129,10 +132,9 @@ pagination.addEventListener("click", (e) => {
     if (target.nodeName !== "BUTTON")
         return; // Matching strategy
     e.preventDefault();
-    handleError();
-    checkErrorOnChange();
-    if (hasError)
-        return;
+    // handleError();
+    // checkErrorOnChange();
+    // if (hasError) return;
     handleStepChange(target);
 });
 // Handle the event on nav button click in the sidebar
@@ -166,3 +168,13 @@ const handlePlanSelection = (e) => {
     clicked.classList.add("card--active");
 };
 plans.addEventListener("click", handlePlanSelection);
+// Handle plan period switch
+const handlePlanPeriodSwitch = (e) => {
+    e.preventDefault();
+    switchParent.classList.toggle("yearly");
+    plans.classList.toggle("plans--yearly");
+    addOnCards.forEach((addOnCard) => {
+        addOnCard.classList.toggle("add-on-card--yearly");
+    });
+};
+switchBtn.addEventListener("click", handlePlanPeriodSwitch);
