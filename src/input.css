@@ -125,6 +125,9 @@
 /* Pick Add-ons Component end*/
 
 /* Summary Start*/
+.change {
+  @apply text-2xl text-neutral-cool-gray underline hover:text-primary-purplish-blue cursor-pointer duration-150 w-min;
+}
 /* .summary--yearly .month {
   @apply hidden;
 }

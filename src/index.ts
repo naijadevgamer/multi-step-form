@@ -182,12 +182,22 @@ const handlePlanSelection = (e: Event) => {
 
   // Add active class to target
   clicked.classList.add("card--active");
+
+  // Add active plan and price to summary
+  const planContent = clicked.querySelector("p.font-bold")?.textContent;
+  const planPrice = clicked.querySelector("p.text-2xl")?.innerHTML;
+  const summaryPlan = document.querySelector(".summary__plan") as HTMLElement;
+  const summaryPlanPrice = document.querySelector(
+    ".summary .price"
+  ) as HTMLDivElement;
+  if (planContent) summaryPlan.textContent = planContent;
+  if (planPrice) summaryPlanPrice.innerHTML = planPrice;
 };
 
 plans.addEventListener("click", handlePlanSelection);
 
-// Handle plan period switch
-const handlePlanPeriodSwitch = (e: Event) => {
+// Handle plan period option switch
+const planPeriodOptionSwitch = (e: Event) => {
   e.preventDefault();
   switchParent.classList.toggle("yearly");
   plans.classList.toggle("period--yearly");
@@ -197,6 +207,9 @@ const handlePlanPeriodSwitch = (e: Event) => {
   summary.classList.toggle("period--yearly");
 };
 
-switchBtn.addEventListener("click", handlePlanPeriodSwitch);
+switchBtn.addEventListener("click", planPeriodOptionSwitch);
 
+const changeBtn = document.querySelector(".change") as HTMLElement;
+
+changeBtn.addEventListener("click", planPeriodOptionSwitch);
 // Handle the summary

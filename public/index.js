@@ -155,6 +155,7 @@ sidebar.addEventListener("click", (e) => {
 /////////////////////////////////////////
 // SELECT PLAN FUNCTIONALITY
 const handlePlanSelection = (e) => {
+    var _a, _b;
     const target = e.target;
     const clicked = target.closest(".plan-card");
     // Matching strategy
@@ -166,10 +167,19 @@ const handlePlanSelection = (e) => {
     });
     // Add active class to target
     clicked.classList.add("card--active");
+    // Add active plan and price to summary
+    const planContent = (_a = clicked.querySelector("p.font-bold")) === null || _a === void 0 ? void 0 : _a.textContent;
+    const planPrice = (_b = clicked.querySelector("p.text-2xl")) === null || _b === void 0 ? void 0 : _b.innerHTML;
+    const summaryPlan = document.querySelector(".summary__plan");
+    const summaryPlanPrice = document.querySelector(".summary .price");
+    if (planContent)
+        summaryPlan.textContent = planContent;
+    if (planPrice)
+        summaryPlanPrice.innerHTML = planPrice;
 };
 plans.addEventListener("click", handlePlanSelection);
-// Handle plan period switch
-const handlePlanPeriodSwitch = (e) => {
+// Handle plan period option switch
+const planPeriodOptionSwitch = (e) => {
     e.preventDefault();
     switchParent.classList.toggle("yearly");
     plans.classList.toggle("period--yearly");
@@ -178,5 +188,7 @@ const handlePlanPeriodSwitch = (e) => {
     });
     summary.classList.toggle("period--yearly");
 };
-switchBtn.addEventListener("click", handlePlanPeriodSwitch);
+switchBtn.addEventListener("click", planPeriodOptionSwitch);
+const changeBtn = document.querySelector(".change");
+changeBtn.addEventListener("click", planPeriodOptionSwitch);
 // Handle the summary

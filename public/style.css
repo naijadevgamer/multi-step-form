@@ -664,17 +664,8 @@ video {
   width: 100%;
 }
 
-.w-min {
-  width: -moz-min-content;
-  width: min-content;
-}
-
 .max-w-\[95rem\] {
   max-width: 95rem;
-}
-
-.cursor-pointer {
-  cursor: pointer;
 }
 
 .flex-col {
@@ -811,10 +802,6 @@ video {
 .text-primary-purplish-blue {
   --tw-text-opacity: 1;
   color: hsl(243 100% 62% / var(--tw-text-opacity));
-}
-
-.underline {
-  text-decoration-line: underline;
 }
 
 .opacity-0 {
@@ -1195,6 +1182,23 @@ video {
 
 /* Summary Start*/
 
+.change {
+  width: -moz-min-content;
+  width: min-content;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  --tw-text-opacity: 1;
+  color: hsl(231 11% 63% / var(--tw-text-opacity));
+  text-decoration-line: underline;
+  transition-duration: 150ms;
+}
+
+.change:hover {
+  --tw-text-opacity: 1;
+  color: hsl(243 100% 62% / var(--tw-text-opacity));
+}
+
 /* .summary--yearly .month {
   @apply hidden;
 }
@@ -1226,11 +1230,6 @@ video {
 .hover\:text-primary-marine-blue:hover {
   --tw-text-opacity: 1;
   color: hsl(213 96% 18% / var(--tw-text-opacity));
-}
-
-.hover\:text-primary-purplish-blue:hover {
-  --tw-text-opacity: 1;
-  color: hsl(243 100% 62% / var(--tw-text-opacity));
 }
 
 @media not all and (min-width: 1200px) {
