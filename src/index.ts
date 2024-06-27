@@ -212,4 +212,61 @@ switchBtn.addEventListener("click", planPeriodOptionSwitch);
 const changeBtn = document.querySelector(".change") as HTMLElement;
 
 changeBtn.addEventListener("click", planPeriodOptionSwitch);
+
+const handleAddOnsCheck = () => {
+  const addOnInputs =
+    document.querySelectorAll<HTMLInputElement>(".add-on-check");
+  const summaryAddOnsWrapper = document.querySelector(
+    ".summary__add-ons"
+  ) as HTMLDivElement;
+  summaryAddOnsWrapper.innerHTML = "";
+  addOnInputs.forEach((input) => {
+    if (input.checked) {
+      const label = input.nextElementSibling as HTMLLabelElement;
+      const addOnName = label.querySelector("p.font-bold")?.textContent;
+      const addOnPrice = label.querySelector(
+        "p.text-primary-purplish-blue"
+      )?.innerHTML;
+      const summaryAddOn = `<ul
+      class="flex justify-between text-2xl font-medium mb-6"
+    >
+      <li class="text-neutral-cool-gray">${addOnName}</li>
+      <li>
+        ${addOnPrice}
+      </li>
+    </ul>`;
+      summaryAddOnsWrapper.insertAdjacentHTML("beforeend", summaryAddOn);
+    }
+  });
+};
+
+// const sumTotalBill = () => {
+//   const planMonthBill = document.querySelector(
+//     ".summary .price .month"
+//   )?.textContent;
+//   const planYearBill = document.querySelector(
+//     ".summary .price .year"
+//   )?.textContent;
+
+//   if (planMonthBill) {
+//     const monthPrice = Number.parseInt(planMonthBill);
+//     console.log(monthPrice);
+//   }
+// };
+// sumTotalBill();
+const handleAddOns = (e: Event) => {
+  const target = e.target as HTMLElement;
+  const clicked = target.closest(".add-on-card");
+  // Matching strategy
+  if (!clicked) return;
+  setTimeout(() => {
+    handleAddOnsCheck();
+  }, 10);
+};
+
+const addOnsWrapper = document.querySelector(
+  ".add-on-inputs"
+) as HTMLDivElement;
+addOnsWrapper.addEventListener("click", handleAddOns);
+
 // Handle the summary

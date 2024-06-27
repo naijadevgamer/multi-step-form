@@ -191,4 +191,51 @@ const planPeriodOptionSwitch = (e) => {
 switchBtn.addEventListener("click", planPeriodOptionSwitch);
 const changeBtn = document.querySelector(".change");
 changeBtn.addEventListener("click", planPeriodOptionSwitch);
+const handleAddOnsCheck = () => {
+    const addOnInputs = document.querySelectorAll(".add-on-check");
+    const summaryAddOnsWrapper = document.querySelector(".summary__add-ons");
+    summaryAddOnsWrapper.innerHTML = "";
+    addOnInputs.forEach((input) => {
+        var _a, _b;
+        if (input.checked) {
+            const label = input.nextElementSibling;
+            const addOnName = (_a = label.querySelector("p.font-bold")) === null || _a === void 0 ? void 0 : _a.textContent;
+            const addOnPrice = (_b = label.querySelector("p.text-primary-purplish-blue")) === null || _b === void 0 ? void 0 : _b.innerHTML;
+            const summaryAddOn = `<ul
+      class="flex justify-between text-2xl font-medium mb-6"
+    >
+      <li class="text-neutral-cool-gray">${addOnName}</li>
+      <li>
+        ${addOnPrice}
+      </li>
+    </ul>`;
+            summaryAddOnsWrapper.insertAdjacentHTML("beforeend", summaryAddOn);
+        }
+    });
+};
+// const sumTotalBill = () => {
+//   const planMonthBill = document.querySelector(
+//     ".summary .price .month"
+//   )?.textContent;
+//   const planYearBill = document.querySelector(
+//     ".summary .price .year"
+//   )?.textContent;
+//   if (planMonthBill) {
+//     const monthPrice = Number.parseInt(planMonthBill);
+//     console.log(monthPrice);
+//   }
+// };
+// sumTotalBill();
+const handleAddOns = (e) => {
+    const target = e.target;
+    const clicked = target.closest(".add-on-card");
+    // Matching strategy
+    if (!clicked)
+        return;
+    setTimeout(() => {
+        handleAddOnsCheck();
+    }, 10);
+};
+const addOnsWrapper = document.querySelector(".add-on-inputs");
+addOnsWrapper.addEventListener("click", handleAddOns);
 // Handle the summary
