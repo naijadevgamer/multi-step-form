@@ -190,10 +190,13 @@ plans.addEventListener("click", handlePlanSelection);
 const handlePlanPeriodSwitch = (e: Event) => {
   e.preventDefault();
   switchParent.classList.toggle("yearly");
-  plans.classList.toggle("plans--yearly");
+  plans.classList.toggle("period--yearly");
   addOnCards.forEach((addOnCard) => {
-    addOnCard.classList.toggle("add-on-card--yearly");
+    addOnCard.classList.toggle("period--yearly");
   });
+  summary.classList.toggle("period--yearly");
 };
 
 switchBtn.addEventListener("click", handlePlanPeriodSwitch);
+
+// Handle the summary

@@ -664,6 +664,11 @@ video {
   width: 100%;
 }
 
+.w-min {
+  width: -moz-min-content;
+  width: min-content;
+}
+
 .max-w-\[95rem\] {
   max-width: 95rem;
 }
@@ -820,10 +825,6 @@ video {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.duration-1000 {
-  transition-duration: 1000ms;
 }
 
 .duration-150 {
@@ -1016,12 +1017,12 @@ video {
 
 /* Plans Component Start*/
 
-.plans--yearly .plan-card .month {
+.period--yearly .month {
   display: none;
 }
 
-.plans--yearly .plan-card .year {
-  display: block;
+.period--yearly .year {
+  display: inline-block;
 }
 
 .plan-card {
@@ -1146,13 +1147,12 @@ video {
   }
 }
 
-.add-on-card--yearly .month {
-  display: none;
+/* .add-on-card--yearly .month {
+  @apply hidden;
 }
-
 .add-on-card--yearly .year {
-  display: block;
-}
+  @apply block;
+} */
 
 .check {
   margin-right: 1.75rem;
@@ -1192,6 +1192,15 @@ video {
 }
 
 /* Pick Add-ons Component end*/
+
+/* Summary Start*/
+
+/* .summary--yearly .month {
+  @apply hidden;
+}
+.summary--yearly .year {
+  @apply inline-block;
+} */
 
 @media not all and (min-width: 600px) {
   .mobile {

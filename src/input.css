@@ -57,11 +57,11 @@
 /* Personal Info Component End */
 
 /* Plans Component Start*/
-.plans--yearly .plan-card .month {
+.period--yearly .month {
   @apply hidden;
 }
-.plans--yearly .plan-card .year {
-  @apply block;
+.period--yearly .year {
+  @apply inline-block;
 }
 
 .plan-card {
@@ -100,12 +100,12 @@
   @apply h-auto w-full p-7 flex items-center rounded-xl border-2 border-neutral-light-gray hover:border-primary-pastel-blue duration-100 cursor-pointer max-sp:px-3;
 }
 
-.add-on-card--yearly .month {
+/* .add-on-card--yearly .month {
   @apply hidden;
 }
 .add-on-card--yearly .year {
   @apply block;
-}
+} */
 .check {
   @apply h-9 w-9 p-2 mr-7 border-2 border-neutral-light-gray rounded-lg max-sp:mr-3;
 }
@@ -123,6 +123,14 @@
 }
 
 /* Pick Add-ons Component end*/
+
+/* Summary Start*/
+/* .summary--yearly .month {
+  @apply hidden;
+}
+.summary--yearly .year {
+  @apply inline-block;
+} */
 
 .mobile {
   @apply max-p:absolute max-p:top-48 max-p:w-[91%] max-p:left-1/2 max-p:transform max-p:-translate-x-1/2 max-p:bg-white max-p:rounded-2xl max-p:p-10 max-sp:p-6;
