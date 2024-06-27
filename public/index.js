@@ -191,9 +191,9 @@ const planPeriodOptionSwitch = (e) => {
 switchBtn.addEventListener("click", planPeriodOptionSwitch);
 const changeBtn = document.querySelector(".change");
 changeBtn.addEventListener("click", planPeriodOptionSwitch);
+const summaryAddOnsWrapper = document.querySelector(".summary__add-ons");
 const handleAddOnsCheck = () => {
     const addOnInputs = document.querySelectorAll(".add-on-check");
-    const summaryAddOnsWrapper = document.querySelector(".summary__add-ons");
     summaryAddOnsWrapper.innerHTML = "";
     addOnInputs.forEach((input) => {
         var _a, _b;
@@ -213,19 +213,25 @@ const handleAddOnsCheck = () => {
         }
     });
 };
-// const sumTotalBill = () => {
-//   const planMonthBill = document.querySelector(
-//     ".summary .price .month"
-//   )?.textContent;
-//   const planYearBill = document.querySelector(
-//     ".summary .price .year"
-//   )?.textContent;
-//   if (planMonthBill) {
-//     const monthPrice = Number.parseInt(planMonthBill);
-//     console.log(monthPrice);
-//   }
-// };
-// sumTotalBill();
+const sumTotalBill = () => {
+    var _a, _b;
+    const planMonthBill = (_a = document.querySelector(".summary .price .month")) === null || _a === void 0 ? void 0 : _a.textContent;
+    const planYearBill = (_b = document.querySelector(".summary .price .year")) === null || _b === void 0 ? void 0 : _b.textContent;
+    const monthPrice = Number.parseInt(planMonthBill);
+    const yearPrice = Number.parseInt(planYearBill);
+    const addOnMonth = [];
+    const addOnYear = [];
+    summaryAddOnsWrapper.querySelectorAll(".month").forEach((p) => {
+        const addOnBill = Number.parseInt(p.textContent);
+        addOnMonth.push(addOnBill);
+    });
+    summaryAddOnsWrapper.querySelectorAll(".year").forEach((p) => {
+        const addOnBill = Number.parseInt(p.textContent);
+        addOnYear.push(addOnBill);
+    });
+    console.log(addOnMonth, addOnYear);
+};
+sumTotalBill();
 const handleAddOns = (e) => {
     const target = e.target;
     const clicked = target.closest(".add-on-card");
