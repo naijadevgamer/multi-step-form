@@ -154,6 +154,29 @@ sidebar.addEventListener("click", (e) => {
     .querySelector("form")) === null || _a === void 0 ? void 0 : _a.addEventListener("submit", (e) => e.preventDefault());
 /////////////////////////////////////////
 // SELECT PLAN FUNCTIONALITY
+const summaryAddOnsWrapper = document.querySelector(".summary__add-ons");
+const sumTotalBill = () => {
+    var _a, _b;
+    const planMonthBill = (_a = document.querySelector(".summary .price .month")) === null || _a === void 0 ? void 0 : _a.textContent;
+    const planYearBill = (_b = document.querySelector(".summary .price .year")) === null || _b === void 0 ? void 0 : _b.textContent;
+    console.log(planMonthBill, planYearBill);
+    let monthPrice = Number.parseInt(planMonthBill);
+    let yearPrice = Number.parseInt(planYearBill);
+    summaryAddOnsWrapper.querySelectorAll(".month").forEach((p) => {
+        const addOnBill = Number.parseInt(p.textContent);
+        monthPrice += addOnBill;
+    });
+    summaryAddOnsWrapper.querySelectorAll(".year").forEach((p) => {
+        const addOnBill = Number.parseInt(p.textContent);
+        yearPrice += addOnBill;
+    });
+    console.log(monthPrice, yearPrice);
+    const totalM = document.querySelector(".total .month");
+    const totalY = document.querySelector(".total .year");
+    totalM.textContent = `+$${monthPrice}/mo`;
+    totalY.textContent = `+$${yearPrice}/yr`;
+};
+sumTotalBill();
 const handlePlanSelection = (e) => {
     var _a, _b;
     const target = e.target;
@@ -176,6 +199,7 @@ const handlePlanSelection = (e) => {
         summaryPlan.textContent = planContent;
     if (planPrice)
         summaryPlanPrice.innerHTML = planPrice;
+    sumTotalBill();
 };
 plans.addEventListener("click", handlePlanSelection);
 // Handle plan period option switch
@@ -191,7 +215,6 @@ const planPeriodOptionSwitch = (e) => {
 switchBtn.addEventListener("click", planPeriodOptionSwitch);
 const changeBtn = document.querySelector(".change");
 changeBtn.addEventListener("click", planPeriodOptionSwitch);
-const summaryAddOnsWrapper = document.querySelector(".summary__add-ons");
 const handleAddOnsCheck = () => {
     const addOnInputs = document.querySelectorAll(".add-on-check");
     summaryAddOnsWrapper.innerHTML = "";
@@ -213,25 +236,29 @@ const handleAddOnsCheck = () => {
         }
     });
 };
-const sumTotalBill = () => {
-    var _a, _b;
-    const planMonthBill = (_a = document.querySelector(".summary .price .month")) === null || _a === void 0 ? void 0 : _a.textContent;
-    const planYearBill = (_b = document.querySelector(".summary .price .year")) === null || _b === void 0 ? void 0 : _b.textContent;
-    const monthPrice = Number.parseInt(planMonthBill);
-    const yearPrice = Number.parseInt(planYearBill);
-    const addOnMonth = [];
-    const addOnYear = [];
-    summaryAddOnsWrapper.querySelectorAll(".month").forEach((p) => {
-        const addOnBill = Number.parseInt(p.textContent);
-        addOnMonth.push(addOnBill);
-    });
-    summaryAddOnsWrapper.querySelectorAll(".year").forEach((p) => {
-        const addOnBill = Number.parseInt(p.textContent);
-        addOnYear.push(addOnBill);
-    });
-    console.log(addOnMonth, addOnYear);
-};
-sumTotalBill();
+// const sumTotalBill = () => {
+//   const planMonthBill: any = document.querySelector(
+//     ".summary .price .month"
+//   )?.textContent;
+//   const planYearBill: any = document.querySelector(
+//     ".summary .price .year"
+//   )?.textContent;
+//   let monthPrice = Number.parseInt(planMonthBill);
+//   let yearPrice = Number.parseInt(planYearBill);
+//   summaryAddOnsWrapper.querySelectorAll(".month").forEach((p: any) => {
+//     const addOnBill = Number.parseInt(p.textContent);
+//     monthPrice += addOnBill;
+//   });
+//   summaryAddOnsWrapper.querySelectorAll(".year").forEach((p: any) => {
+//     const addOnBill = Number.parseInt(p.textContent);
+//     yearPrice += addOnBill;
+//   });
+//   const totalM = document.querySelector(".total .month") as HTMLElement;
+//   const totalY = document.querySelector(".total .year") as HTMLElement;
+//   totalM.textContent = `+$${monthPrice}/mo`;
+//   totalY.textContent = `+$${yearPrice}/yr`;
+// };
+// sumTotalBill();
 const handleAddOns = (e) => {
     const target = e.target;
     const clicked = target.closest(".add-on-card");
@@ -240,6 +267,7 @@ const handleAddOns = (e) => {
         return;
     setTimeout(() => {
         handleAddOnsCheck();
+        sumTotalBill();
     }, 10);
 };
 const addOnsWrapper = document.querySelector(".add-on-inputs");

@@ -168,6 +168,38 @@ document
 
 /////////////////////////////////////////
 // SELECT PLAN FUNCTIONALITY
+const summaryAddOnsWrapper = document.querySelector(
+  ".summary__add-ons"
+) as HTMLDivElement;
+const sumTotalBill = () => {
+  const planMonthBill: any = document.querySelector(
+    ".summary .price .month"
+  )?.textContent;
+  const planYearBill: any = document.querySelector(
+    ".summary .price .year"
+  )?.textContent;
+  console.log(planMonthBill, planYearBill);
+  let monthPrice = Number.parseInt(planMonthBill);
+  let yearPrice = Number.parseInt(planYearBill);
+
+  summaryAddOnsWrapper.querySelectorAll(".month").forEach((p: any) => {
+    const addOnBill = Number.parseInt(p.textContent);
+    monthPrice += addOnBill;
+  });
+  summaryAddOnsWrapper.querySelectorAll(".year").forEach((p: any) => {
+    const addOnBill = Number.parseInt(p.textContent);
+    yearPrice += addOnBill;
+  });
+
+  console.log(monthPrice, yearPrice);
+
+  const totalM = document.querySelector(".total .month") as HTMLElement;
+  const totalY = document.querySelector(".total .year") as HTMLElement;
+  totalM.textContent = `+$${monthPrice}/mo`;
+  totalY.textContent = `+$${yearPrice}/yr`;
+};
+sumTotalBill();
+
 const handlePlanSelection = (e: Event) => {
   const target = e.target as HTMLElement;
   const clicked = target.closest(".plan-card");
@@ -192,6 +224,8 @@ const handlePlanSelection = (e: Event) => {
   ) as HTMLDivElement;
   if (planContent) summaryPlan.textContent = planContent;
   if (planPrice) summaryPlanPrice.innerHTML = planPrice;
+
+  sumTotalBill();
 };
 
 plans.addEventListener("click", handlePlanSelection);
@@ -212,10 +246,6 @@ switchBtn.addEventListener("click", planPeriodOptionSwitch);
 const changeBtn = document.querySelector(".change") as HTMLElement;
 
 changeBtn.addEventListener("click", planPeriodOptionSwitch);
-
-const summaryAddOnsWrapper = document.querySelector(
-  ".summary__add-ons"
-) as HTMLDivElement;
 
 const handleAddOnsCheck = () => {
   const addOnInputs =
@@ -242,30 +272,32 @@ const handleAddOnsCheck = () => {
   });
 };
 
-const sumTotalBill = () => {
-  const planMonthBill: any = document.querySelector(
-    ".summary .price .month"
-  )?.textContent;
-  const planYearBill: any = document.querySelector(
-    ".summary .price .year"
-  )?.textContent;
-  const monthPrice = Number.parseInt(planMonthBill);
-  const yearPrice = Number.parseInt(planYearBill);
-  const addOnMonth: number[] = [];
-  const addOnYear: number[] = [];
+// const sumTotalBill = () => {
+//   const planMonthBill: any = document.querySelector(
+//     ".summary .price .month"
+//   )?.textContent;
+//   const planYearBill: any = document.querySelector(
+//     ".summary .price .year"
+//   )?.textContent;
+//   let monthPrice = Number.parseInt(planMonthBill);
+//   let yearPrice = Number.parseInt(planYearBill);
 
-  summaryAddOnsWrapper.querySelectorAll(".month").forEach((p: any) => {
-    const addOnBill = Number.parseInt(p.textContent);
-    addOnMonth.push(addOnBill);
-  });
-  summaryAddOnsWrapper.querySelectorAll(".year").forEach((p: any) => {
-    const addOnBill = Number.parseInt(p.textContent);
-    addOnYear.push(addOnBill);
-  });
+//   summaryAddOnsWrapper.querySelectorAll(".month").forEach((p: any) => {
+//     const addOnBill = Number.parseInt(p.textContent);
+//     monthPrice += addOnBill;
+//   });
+//   summaryAddOnsWrapper.querySelectorAll(".year").forEach((p: any) => {
+//     const addOnBill = Number.parseInt(p.textContent);
+//     yearPrice += addOnBill;
+//   });
 
-  console.log(addOnMonth, addOnYear);
-};
-sumTotalBill();
+//   const totalM = document.querySelector(".total .month") as HTMLElement;
+//   const totalY = document.querySelector(".total .year") as HTMLElement;
+//   totalM.textContent = `+$${monthPrice}/mo`;
+//   totalY.textContent = `+$${yearPrice}/yr`;
+// };
+
+// sumTotalBill();
 const handleAddOns = (e: Event) => {
   const target = e.target as HTMLElement;
   const clicked = target.closest(".add-on-card");
@@ -273,6 +305,7 @@ const handleAddOns = (e: Event) => {
   if (!clicked) return;
   setTimeout(() => {
     handleAddOnsCheck();
+    sumTotalBill();
   }, 10);
 };
 
