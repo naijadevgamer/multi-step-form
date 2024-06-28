@@ -1,22 +1,27 @@
+const pagination = document.querySelector(".pagination") as HTMLDivElement;
+const sidebar = document.querySelector(".sidebar") as HTMLDivElement;
 const nextBtn = document.querySelector(".btn-p--next") as HTMLButtonElement;
 const prevBtn = document.querySelector(".prev") as HTMLButtonElement;
 const submitBtn = document.querySelector(
   ".btn-p--confirm"
 ) as HTMLButtonElement;
-const navBtns = document.querySelectorAll(".btn-nav") as NodeList;
+const navBtns = document.querySelectorAll<HTMLButtonElement>(".btn-nav");
+
 const addOnCards = document.querySelectorAll<HTMLLabelElement>(".add-on-card");
 
-const pagination = document.querySelector(".pagination") as HTMLDivElement;
-const sidebar = document.querySelector(".sidebar") as HTMLDivElement;
 const infoForm = document.querySelector(".personal-info") as HTMLDivElement;
 const planForm = document.querySelector(".plan") as HTMLDivElement;
-const plans = document.querySelector(".plans") as HTMLDivElement;
-const switchParent = document.querySelector(".option-switch") as HTMLDivElement;
-const switchBtn = document.querySelector(".btn-switch") as HTMLButtonElement;
 const addOnForm = document.querySelector(".add-ons") as HTMLDivElement;
 const summary = document.querySelector(".summary") as HTMLDivElement;
 
-let currPage = 1;
+const plans = document.querySelector(".plans") as HTMLDivElement;
+
+const switchBtn = document.querySelector(".btn-switch") as HTMLButtonElement;
+const summaryAddOnsWrapper = document.querySelector(
+  ".summary__add-ons"
+) as HTMLDivElement;
+
+let currStep = 1;
 let hasError: boolean;
 
 // Handle step button active in sidebar
@@ -30,7 +35,7 @@ const handleBtnActive = (num: number) => {
 
 // Change the step of the form
 const handlePageChange = (): void => {
-  console.log(currPage);
+  console.log(currStep);
 
   // Manipulate pagination display classes
   submitBtn.classList.add("hidden");
@@ -44,15 +49,15 @@ const handlePageChange = (): void => {
   summary.classList.add("hidden");
 
   // Show current form step
-  if (currPage === 1) {
+  if (currStep === 1) {
     prevBtn.classList.add("invisible"); // Button
     infoForm.classList.remove("hidden");
   }
-  if (currPage === 2) planForm.classList.remove("hidden");
+  if (currStep === 2) planForm.classList.remove("hidden");
 
-  if (currPage === 3) addOnForm.classList.remove("hidden");
+  if (currStep === 3) addOnForm.classList.remove("hidden");
 
-  if (currPage === 4) {
+  if (currStep === 4) {
     submitBtn.classList.remove("hidden"); // Button
     nextBtn.classList.add("hidden"); // Button
     summary.classList.remove("hidden");
@@ -62,16 +67,16 @@ const handlePageChange = (): void => {
 // Handles the step changes through next or prev button click
 const handleStepChange = (target: HTMLElement): void => {
   // Handle next step
-  if (target.classList.contains("btn-p--next") && currPage < 4) {
-    currPage++;
-    handleBtnActive(currPage);
+  if (target.classList.contains("btn-p--next") && currStep < 4) {
+    currStep++;
+    handleBtnActive(currStep);
     handlePageChange();
   }
 
   // Handle prev step
-  if (target.classList.contains("prev") && currPage > 1) {
-    currPage--;
-    handleBtnActive(currPage);
+  if (target.classList.contains("prev") && currStep > 1) {
+    currStep--;
+    handleBtnActive(currStep);
     handlePageChange();
   }
 };
@@ -79,8 +84,8 @@ const handleStepChange = (target: HTMLElement): void => {
 // Handles the step changes through sidebar nav click
 const handleSidebarNav = (navBtn: HTMLButtonElement) => {
   // Update current form step base on the button value
-  if (navBtn.textContent) currPage = +navBtn.textContent;
-  handleBtnActive(currPage);
+  if (navBtn.textContent) currStep = +navBtn.textContent;
+  handleBtnActive(currStep);
   handlePageChange();
 };
 
@@ -168,38 +173,6 @@ document
 
 /////////////////////////////////////////
 // SELECT PLAN FUNCTIONALITY
-const summaryAddOnsWrapper = document.querySelector(
-  ".summary__add-ons"
-) as HTMLDivElement;
-const sumTotalBill = () => {
-  const planMonthBill: any = document.querySelector(
-    ".summary .price .month"
-  )?.textContent;
-  const planYearBill: any = document.querySelector(
-    ".summary .price .year"
-  )?.textContent;
-  console.log(planMonthBill, planYearBill);
-  let monthPrice = Number.parseInt(planMonthBill);
-  let yearPrice = Number.parseInt(planYearBill);
-
-  summaryAddOnsWrapper.querySelectorAll(".month").forEach((p: any) => {
-    const addOnBill = Number.parseInt(p.textContent);
-    monthPrice += addOnBill;
-  });
-  summaryAddOnsWrapper.querySelectorAll(".year").forEach((p: any) => {
-    const addOnBill = Number.parseInt(p.textContent);
-    yearPrice += addOnBill;
-  });
-
-  console.log(monthPrice, yearPrice);
-
-  const totalM = document.querySelector(".total .month") as HTMLElement;
-  const totalY = document.querySelector(".total .year") as HTMLElement;
-  totalM.textContent = `+$${monthPrice}/mo`;
-  totalY.textContent = `+$${yearPrice}/yr`;
-};
-sumTotalBill();
-
 const handlePlanSelection = (e: Event) => {
   const target = e.target as HTMLElement;
   const clicked = target.closest(".plan-card");
@@ -225,6 +198,7 @@ const handlePlanSelection = (e: Event) => {
   if (planContent) summaryPlan.textContent = planContent;
   if (planPrice) summaryPlanPrice.innerHTML = planPrice;
 
+  // Calculate total bill in summary phase
   sumTotalBill();
 };
 
@@ -233,17 +207,16 @@ plans.addEventListener("click", handlePlanSelection);
 // Handle plan period option switch
 const planPeriodOptionSwitch = (e: Event) => {
   e.preventDefault();
-  switchParent.classList.toggle("yearly");
+  document.querySelector(".option-switch")?.classList.toggle("yearly");
   plans.classList.toggle("period--yearly");
   addOnCards.forEach((addOnCard) => {
     addOnCard.classList.toggle("period--yearly");
   });
   summary.classList.toggle("period--yearly");
 };
+const changeBtn = document.querySelector(".change") as HTMLElement;
 
 switchBtn.addEventListener("click", planPeriodOptionSwitch);
-
-const changeBtn = document.querySelector(".change") as HTMLElement;
 
 changeBtn.addEventListener("click", planPeriodOptionSwitch);
 
@@ -251,53 +224,71 @@ const handleAddOnsCheck = () => {
   const addOnInputs =
     document.querySelectorAll<HTMLInputElement>(".add-on-check");
 
+  // Empty the add-ons in the summary
   summaryAddOnsWrapper.innerHTML = "";
+
+  // Put add-ons that are checked in the summary
   addOnInputs.forEach((input) => {
     if (input.checked) {
       const label = input.nextElementSibling as HTMLLabelElement;
+
+      // Get name of add-on
       const addOnName = label.querySelector("p.font-bold")?.textContent;
+      // Get price of add-on
       const addOnPrice = label.querySelector(
         "p.text-primary-purplish-blue"
       )?.innerHTML;
+
+      // Template of add-on to be placed in the summary
       const summaryAddOn = `<ul
-      class="flex justify-between text-2xl font-medium mb-6"
-    >
-      <li class="text-neutral-cool-gray">${addOnName}</li>
-      <li>
-        ${addOnPrice}
-      </li>
-    </ul>`;
+        class="flex justify-between text-2xl font-medium mb-6"
+      >
+        <li class="text-neutral-cool-gray">${addOnName}</li>
+        <li>${addOnPrice}</li>
+      </ul>`;
+
+      // Put add-Ons checked in the summary
       summaryAddOnsWrapper.insertAdjacentHTML("beforeend", summaryAddOn);
     }
   });
 };
 
-// const sumTotalBill = () => {
-//   const planMonthBill: any = document.querySelector(
-//     ".summary .price .month"
-//   )?.textContent;
-//   const planYearBill: any = document.querySelector(
-//     ".summary .price .year"
-//   )?.textContent;
-//   let monthPrice = Number.parseInt(planMonthBill);
-//   let yearPrice = Number.parseInt(planYearBill);
+// Function to sum up all the prices in the summary
+const sumTotalBill = () => {
+  const planMonthBill: any = document.querySelector(
+    ".summary .price .month"
+  )?.textContent;
+  const planYearBill: any = document.querySelector(
+    ".summary .price .year"
+  )?.textContent;
 
-//   summaryAddOnsWrapper.querySelectorAll(".month").forEach((p: any) => {
-//     const addOnBill = Number.parseInt(p.textContent);
-//     monthPrice += addOnBill;
-//   });
-//   summaryAddOnsWrapper.querySelectorAll(".year").forEach((p: any) => {
-//     const addOnBill = Number.parseInt(p.textContent);
-//     yearPrice += addOnBill;
-//   });
+  // Start by adding the plan bill for month and year
+  let monthPrice = Number.parseInt(planMonthBill);
+  let yearPrice = Number.parseInt(planYearBill);
 
-//   const totalM = document.querySelector(".total .month") as HTMLElement;
-//   const totalY = document.querySelector(".total .year") as HTMLElement;
-//   totalM.textContent = `+$${monthPrice}/mo`;
-//   totalY.textContent = `+$${yearPrice}/yr`;
-// };
+  // Add the bills for the addons selecteted to moth plan bill for month
+  summaryAddOnsWrapper.querySelectorAll(".month").forEach((addOnPrice: any) => {
+    const addOnBill = Number.parseInt(addOnPrice.textContent);
+    monthPrice += addOnBill;
+  });
 
-// sumTotalBill();
+  // Add the bills for the addons selecteted to year plan bill for year
+  summaryAddOnsWrapper.querySelectorAll(".year").forEach((addOnPrice: any) => {
+    const addOnBill = Number.parseInt(addOnPrice.textContent);
+    yearPrice += addOnBill;
+  });
+
+  // display total bill calculated
+  const totalM = document.querySelector(".total .month") as HTMLElement;
+  const totalY = document.querySelector(".total .year") as HTMLElement;
+  totalM.textContent = `+$${monthPrice}/mo`;
+  totalY.textContent = `+$${yearPrice}/yr`;
+};
+
+// Initialize summation of bills incase neither plan or addons is selected which will not trigger the summation
+sumTotalBill();
+
+// Function to handle changes in add-ons step when clicked
 const handleAddOns = (e: Event) => {
   const target = e.target as HTMLElement;
   const clicked = target.closest(".add-on-card");
@@ -314,4 +305,4 @@ const addOnsWrapper = document.querySelector(
 ) as HTMLDivElement;
 addOnsWrapper.addEventListener("click", handleAddOns);
 
-// Handle the summary
+// Handle submit
