@@ -1,21 +1,27 @@
 "use strict";
-var _a;
+// All About navigations
 const pagination = document.querySelector(".pagination");
 const sidebar = document.querySelector(".sidebar");
 const nextBtn = document.querySelector(".btn-p--next");
 const prevBtn = document.querySelector(".prev");
 const submitBtn = document.querySelector(".btn-p--confirm");
 const navBtns = document.querySelectorAll(".btn-nav");
-const addOnCards = document.querySelectorAll(".add-on-card");
+// All About steps displayed and hided
+const allStepform = document.querySelector("form");
 const infoForm = document.querySelector(".personal-info");
 const planForm = document.querySelector(".plan");
 const addOnForm = document.querySelector(".add-ons");
 const summary = document.querySelector(".summary");
+const confirmation = document.querySelector(".confirm");
+// Other with multiple use
 const plans = document.querySelector(".plans");
+const addOnCards = document.querySelectorAll(".add-on-card");
 const switchBtn = document.querySelector(".btn-switch");
 const summaryAddOnsWrapper = document.querySelector(".summary__add-ons");
-let currStep = 1;
+let currStep = 1; // current Step
 let hasError;
+// Prevent default submission on enter click
+allStepform.addEventListener("submit", (e) => e.preventDefault());
 // Handle step button active in sidebar
 const handleBtnActive = (num) => {
     navBtns.forEach((e, i) => {
@@ -149,9 +155,6 @@ sidebar.addEventListener("click", (e) => {
         return;
     handleSidebarNav(clicked);
 });
-// Prevent default submission
-(_a = document
-    .querySelector("form")) === null || _a === void 0 ? void 0 : _a.addEventListener("submit", (e) => e.preventDefault());
 /////////////////////////////////////////
 // SELECT PLAN FUNCTIONALITY
 const handlePlanSelection = (e) => {
@@ -259,4 +262,11 @@ const handleAddOns = (e) => {
 };
 const addOnsWrapper = document.querySelector(".add-on-inputs");
 addOnsWrapper.addEventListener("click", handleAddOns);
-// Handle submit
+// Handle confirm to submit all
+const handleConfirm = () => {
+    allStepform.classList.add("hidden");
+    confirmation.classList.remove("hidden");
+    confirmation.classList.add("flex");
+    sidebar.removeEventListener("click", () => { });
+};
+submitBtn.addEventListener("click", handleConfirm);

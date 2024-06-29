@@ -1,3 +1,4 @@
+// All About navigations
 const pagination = document.querySelector(".pagination") as HTMLDivElement;
 const sidebar = document.querySelector(".sidebar") as HTMLDivElement;
 const nextBtn = document.querySelector(".btn-p--next") as HTMLButtonElement;
@@ -7,22 +8,27 @@ const submitBtn = document.querySelector(
 ) as HTMLButtonElement;
 const navBtns = document.querySelectorAll<HTMLButtonElement>(".btn-nav");
 
-const addOnCards = document.querySelectorAll<HTMLLabelElement>(".add-on-card");
-
+// All About steps displayed and hided
+const allStepform = document.querySelector("form") as HTMLFormElement;
 const infoForm = document.querySelector(".personal-info") as HTMLDivElement;
 const planForm = document.querySelector(".plan") as HTMLDivElement;
 const addOnForm = document.querySelector(".add-ons") as HTMLDivElement;
 const summary = document.querySelector(".summary") as HTMLDivElement;
+const confirmation = document.querySelector(".confirm") as HTMLDivElement;
 
+// Other with multiple use
 const plans = document.querySelector(".plans") as HTMLDivElement;
-
+const addOnCards = document.querySelectorAll<HTMLLabelElement>(".add-on-card");
 const switchBtn = document.querySelector(".btn-switch") as HTMLButtonElement;
 const summaryAddOnsWrapper = document.querySelector(
   ".summary__add-ons"
 ) as HTMLDivElement;
 
-let currStep = 1;
+let currStep = 1; // current Step
 let hasError: boolean;
+
+// Prevent default submission on enter click
+allStepform.addEventListener("submit", (e) => e.preventDefault());
 
 // Handle step button active in sidebar
 const handleBtnActive = (num: number) => {
@@ -166,11 +172,6 @@ sidebar.addEventListener<"click">("click", (e: MouseEvent) => {
   handleSidebarNav(clicked);
 });
 
-// Prevent default submission
-document
-  .querySelector("form")
-  ?.addEventListener("submit", (e) => e.preventDefault());
-
 /////////////////////////////////////////
 // SELECT PLAN FUNCTIONALITY
 const handlePlanSelection = (e: Event) => {
@@ -305,4 +306,13 @@ const addOnsWrapper = document.querySelector(
 ) as HTMLDivElement;
 addOnsWrapper.addEventListener("click", handleAddOns);
 
-// Handle submit
+// Handle confirm to submit all
+const handleConfirm = () => {
+  allStepform.classList.add("hidden");
+  confirmation.classList.remove("hidden");
+  confirmation.classList.add("flex");
+
+  sidebar.removeEventListener("click", () => {});
+};
+
+submitBtn.addEventListener("click", handleConfirm);
