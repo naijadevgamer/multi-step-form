@@ -1,3 +1,9 @@
+// Interface and Type Definitions
+interface ValidationResult {
+  isValid: boolean;
+  message: string;
+}
+
 // All About navigations
 const pagination = document.querySelector(".pagination") as HTMLDivElement;
 const sidebar = document.querySelector(".sidebar") as HTMLDivElement;
