@@ -1,9 +1,3 @@
-// Interface and Type Definitions
-interface ValidationResult {
-  isValid: boolean;
-  message: string;
-}
-
 // All About navigations
 const pagination = document.querySelector(".pagination") as HTMLDivElement;
 const sidebar = document.querySelector(".sidebar") as HTMLDivElement;
@@ -258,8 +252,13 @@ const handleAddOnsCheck = () => {
       summaryAddOnsWrapper.insertAdjacentHTML("beforeend", summaryAddOn);
     }
   });
+
+  // If no add-ons is added
+  if (!summaryAddOnsWrapper.innerHTML)
+    summaryAddOnsWrapper.innerHTML = "<p>No add-on is added</p>";
 };
 
+handleAddOnsCheck();
 // Function to sum up all the prices in the summary
 const sumTotalBill = () => {
   const planMonthBill: any = document.querySelector(

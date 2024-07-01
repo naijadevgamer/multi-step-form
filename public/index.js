@@ -221,7 +221,11 @@ const handleAddOnsCheck = () => {
             summaryAddOnsWrapper.insertAdjacentHTML("beforeend", summaryAddOn);
         }
     });
+    // If no add-ons is added
+    if (!summaryAddOnsWrapper.innerHTML)
+        summaryAddOnsWrapper.innerHTML = "<p>No add-on is added</p>";
 };
+handleAddOnsCheck();
 // Function to sum up all the prices in the summary
 const sumTotalBill = () => {
     var _a, _b;
