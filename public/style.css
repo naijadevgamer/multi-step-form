@@ -912,6 +912,7 @@ video {
   font-size: 1.4rem;
   --tw-text-opacity: 1;
   color: hsl(228 100% 84% / var(--tw-text-opacity));
+  transition-duration: 150ms;
 }
 
 .step-name {
@@ -971,6 +972,9 @@ video {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   font-weight: 500;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .info-input::-moz-placeholder {
@@ -992,6 +996,7 @@ video {
   --tw-text-opacity: 1;
   color: hsl(354 84% 57% / var(--tw-text-opacity));
   opacity: 1;
+  transition-duration: 150ms;
 }
 
 .error input {
@@ -1023,7 +1028,7 @@ video {
   --tw-border-opacity: 1;
   border-color: hsl(229 24% 87% / var(--tw-border-opacity));
   padding: 1.5rem;
-  transition-duration: 100ms;
+  transition-duration: 150ms;
 }
 
 .plan-card:hover {
@@ -1119,7 +1124,7 @@ video {
   --tw-border-opacity: 1;
   border-color: hsl(229 24% 87% / var(--tw-border-opacity));
   padding: 1.75rem;
-  transition-duration: 100ms;
+  transition-duration: 150ms;
 }
 
 .add-on-card:hover {
@@ -1134,13 +1139,6 @@ video {
   }
 }
 
-/* .add-on-card--yearly .month {
-  @apply hidden;
-}
-.add-on-card--yearly .year {
-  @apply block;
-} */
-
 .check {
   margin-right: 1.75rem;
   height: 2.25rem;
@@ -1150,6 +1148,7 @@ video {
   --tw-border-opacity: 1;
   border-color: hsl(229 24% 87% / var(--tw-border-opacity));
   padding: 0.5rem;
+  transition-duration: 150ms;
 }
 
 @media not all and (min-width: 300px) {
@@ -1198,13 +1197,6 @@ video {
   --tw-text-opacity: 1;
   color: hsl(243 100% 62% / var(--tw-text-opacity));
 }
-
-/* .summary--yearly .month {
-  @apply hidden;
-}
-.summary--yearly .year {
-  @apply inline-block;
-} */
 
 @media not all and (min-width: 600px) {
   .mobile {
