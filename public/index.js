@@ -1,105 +1,108 @@
 "use strict";
-// All About navigations
+// Navigation elements
 const pagination = document.querySelector(".pagination");
 const sidebar = document.querySelector(".sidebar");
 const nextBtn = document.querySelector(".btn-p--next");
 const prevBtn = document.querySelector(".prev");
 const submitBtn = document.querySelector(".btn-p--confirm");
 const navBtns = document.querySelectorAll(".btn-nav");
-// All About steps displayed and hided
+// Step forms
 const allStepform = document.querySelector("form");
 const infoForm = document.querySelector(".personal-info");
 const planForm = document.querySelector(".plan");
 const addOnForm = document.querySelector(".add-ons");
 const summary = document.querySelector(".summary");
 const confirmation = document.querySelector(".confirm");
-// Other with multiple use
+//  Misc elements
+const inputs = document.querySelectorAll("#name, #email, #tel");
 const plans = document.querySelector(".plans");
 const addOnCards = document.querySelectorAll(".add-on-card");
 const switchBtn = document.querySelector(".btn-switch");
+const addOnsWrapper = document.querySelector(".add-on-inputs");
+const changeBtn = document.querySelector(".change");
 const summaryAddOnsWrapper = document.querySelector(".summary__add-ons");
-let currStep = 1; // current Step
-let hasError;
-// Prevent default submission on enter click
+let currStep = 1; // Current step in the form navigation
+let hasError = false; // Error state
+// Prevent default form submission on enter key press
 allStepform.addEventListener("submit", (e) => e.preventDefault());
-// Handle step button active in sidebar
-const handleBtnActive = (num) => {
-    navBtns.forEach((e, i) => {
-        const el = e;
-        if (i === num - 1)
-            el.classList.add("btn-nav--active");
+/// Activates the current step button in the sidebar
+const activateStepButton = (stepIndex) => {
+    navBtns.forEach((btn, index) => {
+        if (index === stepIndex - 1)
+            btn.classList.add("btn-nav--active");
         else
-            el.classList.remove("btn-nav--active");
+            btn.classList.remove("btn-nav--active");
     });
 };
-// Change the step of the form
-const handlePageChange = () => {
-    console.log(currStep);
-    // Manipulate pagination display classes
+// Updates the form to display the current step
+const updateFormStep = () => {
+    console.log(`Current Step: ${currStep}`);
+    // Manage button visibility
     submitBtn.classList.add("hidden");
     nextBtn.classList.remove("hidden");
     prevBtn.classList.remove("invisible");
-    // Hide all forms
-    infoForm.classList.add("hidden");
-    planForm.classList.add("hidden");
-    addOnForm.classList.add("hidden");
-    summary.classList.add("hidden");
-    // Show current form step
-    if (currStep === 1) {
-        prevBtn.classList.add("invisible"); // Button
-        infoForm.classList.remove("hidden");
-    }
-    if (currStep === 2)
-        planForm.classList.remove("hidden");
-    if (currStep === 3)
-        addOnForm.classList.remove("hidden");
-    if (currStep === 4) {
-        submitBtn.classList.remove("hidden"); // Button
-        nextBtn.classList.add("hidden"); // Button
-        summary.classList.remove("hidden");
+    // Hide all forms initially
+    [infoForm, planForm, addOnForm, summary].forEach((form) => form.classList.add("hidden"));
+    // Show the form corresponding to the current step
+    switch (currStep) {
+        case 1:
+            prevBtn.classList.add("invisible");
+            infoForm.classList.remove("hidden");
+            break;
+        case 2:
+            planForm.classList.remove("hidden");
+            break;
+        case 3:
+            addOnForm.classList.remove("hidden");
+            break;
+        case 4:
+            submitBtn.classList.remove("hidden");
+            nextBtn.classList.add("hidden");
+            summary.classList.remove("hidden");
+            break;
     }
 };
-// Handles the step changes through next or prev button click
-const handleStepChange = (target) => {
-    // Handle next step
+// Handles changes between form steps using next/previous buttons
+const changeStep = (target) => {
     if (target.classList.contains("btn-p--next") && currStep < 4) {
         currStep++;
-        handleBtnActive(currStep);
-        handlePageChange();
     }
-    // Handle prev step
-    if (target.classList.contains("prev") && currStep > 1) {
+    else if (target.classList.contains("prev") && currStep > 1) {
         currStep--;
-        handleBtnActive(currStep);
-        handlePageChange();
     }
+    activateStepButton(currStep);
+    updateFormStep();
 };
 // Handles the step changes through sidebar nav click
-const handleSidebarNav = (navBtn) => {
+const navigateSidebar = (navBtn) => {
     // Update current form step base on the button value
     if (navBtn.textContent)
         currStep = +navBtn.textContent;
-    handleBtnActive(currStep);
-    handlePageChange();
+    activateStepButton(currStep);
+    updateFormStep();
 };
 /////////////////////////////////////////
 // PERSONAL INFO FORM VALIDATION
+/**
+ * Displays an error message for an input element.
+ * @param msg - The error message to display.
+ * @param el - The input element associated with the error.
+ */
 const showError = (msg, el) => {
     const inputContainer = el.closest("div");
-    if (inputContainer) {
-        inputContainer.classList.add("error");
-        const errorMsgElement = inputContainer.querySelector("span");
-        if (errorMsgElement)
-            errorMsgElement.textContent = msg;
-    }
+    inputContainer.classList.add("error");
+    const errorMsgElement = inputContainer.querySelector("span");
+    errorMsgElement.textContent = msg;
 };
+/**
+ * Reverts the error state for an input element.
+ * @param el - The input element to revert the error state.
+ */
 const revertError = (el) => {
     const inputContainer = el.closest("div");
-    if (inputContainer) {
-        inputContainer.classList.remove("error");
-    }
+    inputContainer.classList.remove("error");
 };
-const inputs = document.querySelectorAll("#name, #email, #tel");
+// Validates the personal info form inputs and shows errors if invalid
 const handleError = () => {
     const fullNameRegex = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
     const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
@@ -107,8 +110,10 @@ const handleError = () => {
     const regexArr = [fullNameRegex, emailRegex, phoneNumberRegex];
     inputs.forEach((input, i) => {
         // Check if empty
-        if (input.value === "")
-            return showError("Field is empty", input);
+        if (input.value.trim() === "") {
+            showError("This field is required", input);
+            return;
+        }
         else
             revertError(input);
         // Check if input is valid
@@ -118,7 +123,7 @@ const handleError = () => {
             if (i === 1)
                 showError("Whoops, make sure it's an email", input);
             if (i === 2)
-                showError("Make sure it's a phone number", input);
+                showError("Make sure it follows the format given", input);
         }
         else
             revertError(input);
@@ -126,25 +131,26 @@ const handleError = () => {
     // Update hasError
     hasError = Array.from(inputs).some((input) => { var _a; return ((_a = input.closest("div")) === null || _a === void 0 ? void 0 : _a.classList.contains("error")) || false; });
 };
-// Continue to check for when personal info input values are changed or edited
+// Adds change event listeners to the personal info form inputs to handle validation.
 const checkErrorOnChange = () => {
     inputs.forEach((input) => {
         input.addEventListener("change", handleError);
     });
 };
-// Handle the event on next and prev buttons
+// Event listener for pagination buttons
 pagination.addEventListener("click", (e) => {
     const target = e.target;
     if (target.nodeName !== "BUTTON")
         return; // Matching strategy
     e.preventDefault();
-    // handleError();
-    // checkErrorOnChange();
-    // if (hasError) return;
-    handleStepChange(target);
+    handleError();
+    checkErrorOnChange();
+    if (hasError)
+        return;
+    changeStep(target);
 });
-// Handle the event on nav button click in the sidebar
-sidebar.addEventListener("click", (e) => {
+// Handles navigation button clicks in the sidebar.
+const handleSidebarNavClick = (e) => {
     const target = e.target;
     const clicked = target.closest(".btn-nav");
     if (!clicked)
@@ -153,10 +159,13 @@ sidebar.addEventListener("click", (e) => {
     checkErrorOnChange();
     if (hasError)
         return;
-    handleSidebarNav(clicked);
-});
+    navigateSidebar(clicked);
+};
+// Event listener for sidebar navigation buttons
+sidebar.addEventListener("click", handleSidebarNavClick);
 /////////////////////////////////////////
 // SELECT PLAN FUNCTIONALITY
+// Handles the selection of a plan card
 const handlePlanSelection = (e) => {
     var _a, _b;
     const target = e.target;
@@ -164,13 +173,13 @@ const handlePlanSelection = (e) => {
     // Matching strategy
     if (!clicked)
         return;
-    // Remove active classes
-    document.querySelectorAll(".plan-card").forEach((card) => {
-        card.classList.remove("card--active");
-    });
-    // Add active class to target
+    // Remove active classes from all plan cards
+    document
+        .querySelectorAll(".plan-card")
+        .forEach((card) => card.classList.remove("card--active"));
+    // Add active class to the clicked plan card
     clicked.classList.add("card--active");
-    // Add active plan and price to summary
+    // Update summary with selected plan and price
     const planContent = (_a = clicked.querySelector("p.font-bold")) === null || _a === void 0 ? void 0 : _a.textContent;
     const planPrice = (_b = clicked.querySelector("p.text-2xl")) === null || _b === void 0 ? void 0 : _b.innerHTML;
     const summaryPlan = document.querySelector(".summary__plan");
@@ -179,12 +188,13 @@ const handlePlanSelection = (e) => {
         summaryPlan.textContent = planContent;
     if (planPrice)
         summaryPlanPrice.innerHTML = planPrice;
-    // Calculate total bill in summary phase
+    // Calculate total bill in the summary phase
     sumTotalBill();
 };
+// Event listener for plan selection
 plans.addEventListener("click", handlePlanSelection);
-// Handle plan period option switch
-const planPeriodOptionSwitch = (e) => {
+// Handles the switching between monthly and yearly plan periods.
+const handlePlanPeriodSwitch = (e) => {
     var _a;
     e.preventDefault();
     (_a = document.querySelector(".option-switch")) === null || _a === void 0 ? void 0 : _a.classList.toggle("yearly");
@@ -194,83 +204,85 @@ const planPeriodOptionSwitch = (e) => {
     });
     summary.classList.toggle("period--yearly");
 };
-const changeBtn = document.querySelector(".change");
-switchBtn.addEventListener("click", planPeriodOptionSwitch);
-changeBtn.addEventListener("click", planPeriodOptionSwitch);
-const handleAddOnsCheck = () => {
+// Event listeners to handle plan period switch in plan and summary phase
+switchBtn.addEventListener("click", handlePlanPeriodSwitch);
+changeBtn.addEventListener("click", handlePlanPeriodSwitch);
+/////////////////////////////////////////
+// ADD-ONS FUNCTIONALITY
+// Updates the add-ons section in the summary based on the selected add-ons.
+const updateAddOnsSummary = () => {
     const addOnInputs = document.querySelectorAll(".add-on-check");
-    // Empty the add-ons in the summary
+    // Clear the summary add-ons wrapper
     summaryAddOnsWrapper.innerHTML = "";
-    // Put add-ons that are checked in the summary
+    // Add selected add-ons to the summary
     addOnInputs.forEach((input) => {
         var _a, _b;
         if (input.checked) {
             const label = input.nextElementSibling;
-            // Get name of add-on
             const addOnName = (_a = label.querySelector("p.font-bold")) === null || _a === void 0 ? void 0 : _a.textContent;
-            // Get price of add-on
             const addOnPrice = (_b = label.querySelector("p.text-primary-purplish-blue")) === null || _b === void 0 ? void 0 : _b.innerHTML;
-            // Template of add-on to be placed in the summary
+            // Template for adding selected add-on to the summary
             const summaryAddOn = `<ul
         class="flex justify-between text-2xl font-medium mb-6"
       >
         <li class="text-neutral-cool-gray">${addOnName}</li>
         <li>${addOnPrice}</li>
       </ul>`;
-            // Put add-Ons checked in the summary
+            // Insert the add-on into the summary
             summaryAddOnsWrapper.insertAdjacentHTML("beforeend", summaryAddOn);
         }
     });
-    // If no add-ons is added
+    // Show message if no add-ons are selected
     if (!summaryAddOnsWrapper.innerHTML)
         summaryAddOnsWrapper.innerHTML = "<p>No add-on is added</p>";
 };
-handleAddOnsCheck();
-// Function to sum up all the prices in the summary
+// Initialize add-ons check
+updateAddOnsSummary();
+// Calculates and updates the total bill in the summary
 const sumTotalBill = () => {
     var _a, _b;
-    const planMonthBill = (_a = document.querySelector(".summary .price .month")) === null || _a === void 0 ? void 0 : _a.textContent;
-    const planYearBill = (_b = document.querySelector(".summary .price .year")) === null || _b === void 0 ? void 0 : _b.textContent;
-    // Start by adding the plan bill for month and year
-    let monthPrice = Number.parseInt(planMonthBill);
-    let yearPrice = Number.parseInt(planYearBill);
-    // Add the bills for the addons selecteted to moth plan bill for month
+    const planMonthBill = ((_a = document.querySelector(".summary .price .month")) === null || _a === void 0 ? void 0 : _a.textContent) || "0";
+    const planYearBill = ((_b = document.querySelector(".summary .price .year")) === null || _b === void 0 ? void 0 : _b.textContent) || "0";
+    // Parse plan bills
+    let monthPrice = parseInt(planMonthBill);
+    let yearPrice = parseInt(planYearBill);
+    // Add add-ons bills to the plan bill
     summaryAddOnsWrapper.querySelectorAll(".month").forEach((addOnPrice) => {
-        const addOnBill = Number.parseInt(addOnPrice.textContent);
-        monthPrice += addOnBill;
+        monthPrice += parseInt(addOnPrice.textContent || "0");
     });
-    // Add the bills for the addons selecteted to year plan bill for year
     summaryAddOnsWrapper.querySelectorAll(".year").forEach((addOnPrice) => {
-        const addOnBill = Number.parseInt(addOnPrice.textContent);
-        yearPrice += addOnBill;
+        yearPrice += parseInt(addOnPrice.textContent || "0");
     });
-    // display total bill calculated
-    const totalM = document.querySelector(".total .month");
-    const totalY = document.querySelector(".total .year");
-    totalM.textContent = `+$${monthPrice}/mo`;
-    totalY.textContent = `+$${yearPrice}/yr`;
+    // Display total bill
+    const totalMonthElement = document.querySelector(".total .month");
+    const totalYearElement = document.querySelector(".total .year");
+    totalMonthElement.textContent = `+$${monthPrice}/mo`;
+    totalYearElement.textContent = `+$${yearPrice}/yr`;
 };
-// Initialize summation of bills incase neither plan or addons is selected which will not trigger the summation
+// Initialize the total bill summation
 sumTotalBill();
-// Function to handle changes in add-ons step when clicked
-const handleAddOns = (e) => {
+// Handles the selection of add-ons
+const handleAddOnsSelection = (e) => {
     const target = e.target;
     const clicked = target.closest(".add-on-card");
     // Matching strategy
     if (!clicked)
         return;
     setTimeout(() => {
-        handleAddOnsCheck();
+        updateAddOnsSummary();
         sumTotalBill();
     }, 10);
 };
-const addOnsWrapper = document.querySelector(".add-on-inputs");
-addOnsWrapper.addEventListener("click", handleAddOns);
-// Handle confirm to submit all
+// Event listener to handle the selection of add-ons
+addOnsWrapper.addEventListener("click", handleAddOnsSelection);
+/////////////////////////////////////////
+// FORM CONFIRMATION
+// Handles the form submission and displays the confirmation message.
 const handleConfirm = () => {
     allStepform.classList.add("hidden");
     confirmation.classList.remove("hidden");
     confirmation.classList.add("flex");
-    sidebar.removeEventListener("click", () => { });
+    sidebar.removeEventListener("click", handleSidebarNavClick);
 };
+// Event listener to handle confirmation and submission
 submitBtn.addEventListener("click", handleConfirm);
