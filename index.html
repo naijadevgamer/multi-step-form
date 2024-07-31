@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="text-html max-tl:text-land max-tp:text-port min-[1800px]:text-desktop"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./index.js" defer></script>
+    <title>Multi-step form</title>
+  </head>
+  <body
+    class="font-ubuntu bg-neutral-magnolia text-[1.6rem] flex justify-center min-h-[100vh]"
+  >
+    <!-- Form card-->
+    <main
+      class="bg-white h-[60rem] max-w-[95rem] w-[90%] p-4 flex rounded-3xl shadow-lg my-40 max-p:mt-0 max-p:flex-col max-p:w-full max-p:p-0 max-p:rounded-none max-p:bg-neutral-magnolia max-p:h-[75rem] max-p:min-h-[100vh] max-p:mb-0 max-p:relative max-sp:h-[80rem]"
+    >
+      <!-- Sidebar Start -->
+      <div class="sidebar">
+        <!-- Step 1 nav  -->
+        <div class="step-wrap">
+          <button class="btn-nav btn-nav--active">1</button>
+          <div class="max-p:hidden">
+            <div class="step">Step 1</div>
+            <div class="step-name">Your info</div>
+          </div>
+        </div>
+
+        <!-- Step 2 nav  -->
+        <div class="step-wrap">
+          <button class="btn-nav">2</button>
+          <div class="max-p:hidden">
+            <div class="step">Step 2</div>
+            <div class="step-name">Select plan</div>
+          </div>
+        </div>
+
+        <!-- Step 3 nav  -->
+        <div class="step-wrap">
+          <button class="btn-nav">3</button>
+          <div class="max-p:hidden">
+            <div class="step">Step 3</div>
+            <div class="step-name">Add-ons</div>
+          </div>
+        </div>
+
+        <!-- Step 4 nav  -->
+        <div class="step-wrap">
+          <button class="btn-nav">4</button>
+          <div class="max-p:hidden">
+            <div class="step">Step 4</div>
+            <div class="step-name">Summary</div>
+          </div>
+        </div>
+      </div>
+      <!-- Sidebar End-->
+
+      <!-- Form Start-->
+      <form
+        class="w-[66%] h-full pt-14 pb-10 px-32 text-primary-marine-blue flex flex-col max-tp:px-16"
+      >
+        <!-- Personal info Start -->
+        <div class="personal-info mobile">
+          <h1 class="font-bold text-[3.2rem] mb-6 max-p:mb-4">Personal info</h1>
+          <p class="text-neutral-cool-gray mb-12 font-medium max-p:mb-8">
+            Please provide your name, email address, and phone number.
+          </p>
+
+          <!-- Name  -->
+          <div class="mb-6">
+            <div class="flex justify-between font-medium text-2xl mb-2">
+              <label for="name">Name</label>
+              <span class="invisible opacity-0 inline-block"
+                >Error message</span
+              >
+            </div>
+            <input
+              class="info-input"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="e.g. Stephen King"
+            />
+          </div>
+
+          <!-- Email Address  -->
+          <div class="mb-6">
+            <div class="flex justify-between font-medium text-2xl mb-2">
+              <label for="email">Email Address</label>
+              <span class="invisible opacity-0 inline-block"
+                >Error message</span
+              >
+            </div>
+            <input
+              class="info-input"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="e.g. stephenKing@lorem.com"
+            />
+          </div>
+
+          <!-- Phone Number  -->
+          <div class="">
+            <div class="flex justify-between font-medium text-2xl mb-2">
+              <label for="tel">Phone Number</label>
+              <span class="invisible opacity-0 inline-block"
+                >Error message</span
+              >
+            </div>
+            <input
+              class="info-input"
+              type="tel"
+              name="tel"
+              id="tel"
+              placeholder="e.g. +234 806 140 0782"
+            />
+          </div>
+        </div>
+        <!-- Personal info End -->
+
+        <!-- Select Plan Start-->
+        <div class="plan mobile hidden duration-500">
+          <h1 class="font-bold text-[3.2rem] mb-6 max-p:mb-4">
+            Select your plan
+          </h1>
+          <p class="text-neutral-cool-gray mb-12 font-medium max-p:mb-8">
+            You have the option of monthly or yearly billing.
+          </p>
+
+          <!-- Plans Setting Start -->
+          <div>
+            <!-- Plan cards start -->
+            <div class="plans mb-12 flex justify-between max-p:flex-col">
+              <!-- Plan 1: Arcade -->
+              <div class="plan-card card--active">
+                <img
+                  class="mb-16 h-16 w-16 max-p:mb-0 max-p:mr-6"
+                  src="images/icon-arcade.svg"
+                  alt="Arcade icon"
+                />
+                <div>
+                  <p class="font-bold">Arcade</p>
+                  <p class="text-neutral-cool-gray text-2xl">
+                    $<span class="month">9/mo</span>
+                    <span class="hidden year">90/yr</span>
+                  </p>
+                  <p class="hidden year text-xl font-medium">2 months free</p>
+                </div>
+              </div>
+
+              <!-- Plan 2: Advanced -->
+              <div class="plan-card">
+                <img
+                  class="mb-16 h-16 w-16 max-p:mb-0 max-p:mr-6"
+                  src="images/icon-advanced.svg"
+                  alt="Advanced icon"
+                />
+                <div>
+                  <p class="font-bold">Advanced</p>
+                  <p class="text-neutral-cool-gray text-2xl">
+                    $<span class="month">12/mo</span>
+                    <span class="hidden year">120/yr</span>
+                  </p>
+                  <p class="hidden year text-xl font-medium">2 months free</p>
+                </div>
+              </div>
+
+              <!-- Plan 3: Pro -->
+              <div class="plan-card">
+                <img
+                  class="mb-16 h-16 w-16 max-p:mb-0 max-p:mr-6"
+                  src="images/icon-pro.svg"
+                  alt="Pro icon"
+                />
+                <div>
+                  <p class="font-bold">Pro</p>
+
+                  <p class="text-neutral-cool-gray text-2xl">
+                    $<span class="month">15/mo</span
+                    ><span class="hidden year">150/yr</span>
+                  </p>
+                  <p class="hidden year text-xl font-medium">2 months free</p>
+                </div>
+              </div>
+            </div>
+            <!-- Plan cards end  -->
+
+            <!-- Plan Switch start -->
+            <div class="option-switch">
+              <div class="duration-200">Monthly</div>
+              <button class="btn-switch">
+                <span
+                  class="inline-block rounded-[50%] h-6 w-6 bg-white duration-200"
+                ></span>
+              </button>
+              <div class="text-neutral-cool-gray year duration-200">Yearly</div>
+            </div>
+            <!-- Plan Switch end -->
+          </div>
+          <!-- Plans Setting end -->
+        </div>
+        <!-- Select Plan End -->
+
+        <!-- Pick add-ons Start-->
+        <div class="add-ons mobile hidden">
+          <h1 class="font-bold text-[3.2rem] mb-6 max-p:mb-4">Pick add-ons</h1>
+          <p class="text-neutral-cool-gray mb-12 font-medium max-p:mb-8">
+            Add-ons help enhance your gaming experience.
+          </p>
+
+          <!-- Add-ons Start -->
+          <div class="add-on-inputs">
+            <!-- Add-on 1: Online service -->
+            <input
+              type="checkbox"
+              id="online"
+              name="check-online"
+              class="add-on-check hidden"
+            />
+            <label for="online" class="add-on-card mb-6">
+              <div class="check">
+                <img
+                  class="h-full w-full opacity-0 duration-150"
+                  src="images/icon-checkmark.svg"
+                  alt="checkmark icon"
+                />
+              </div>
+
+              <div class="mr-auto">
+                <p class="font-bold">Online service</p>
+                <p class="text-neutral-cool-gray text-2xl">
+                  Access to multiplyer games
+                </p>
+              </div>
+
+              <p class="text-primary-purplish-blue text-2xl">
+                +$<span class="month">1/mo</span
+                ><span class="hidden year">10/yr</span>
+              </p>
+            </label>
+
+            <!-- Add-on 2: Larger storage -->
+            <input
+              type="checkbox"
+              id="storage"
+              name="check-storage"
+              class="add-on-check hidden"
+            />
+            <label for="storage" class="add-on-card mb-6">
+              <div class="check">
+                <img
+                  class="h-full w-full opacity-0 duration-150"
+                  src="images/icon-checkmark.svg"
+                  alt="checkmark icon"
+                />
+              </div>
+
+              <div class="mr-auto">
+                <p class="font-bold">Larger storage</p>
+                <p class="text-neutral-cool-gray text-2xl">
+                  Extra 1TB of cloud save
+                </p>
+              </div>
+
+              <p class="text-primary-purplish-blue text-2xl">
+                +$<span class="month">2/mo</span
+                ><span class="hidden year">20/yr</span>
+              </p>
+            </label>
+
+            <!-- Add-on 3: Customizable profile -->
+            <input
+              type="checkbox"
+              id="customizable"
+              name="check-customizable"
+              class="add-on-check hidden"
+            />
+            <label for="customizable" class="add-on-card">
+              <div class="check">
+                <img
+                  class="h-full w-full opacity-0 duration-150"
+                  src="images/icon-checkmark.svg"
+                  alt="checkmark icon"
+                />
+              </div>
+
+              <div class="mr-auto">
+                <p class="font-bold">Customizable Profile</p>
+                <p class="text-neutral-cool-gray text-2xl">
+                  Custom theme on your profile
+                </p>
+              </div>
+
+              <p class="text-primary-purplish-blue text-2xl">
+                +$<span class="month">2/mo</span
+                ><span class="hidden year">20/yr</span>
+              </p>
+            </label>
+          </div>
+        </div>
+        <!-- Pick add-ons End -->
+
+        <!-- Finishing up Start-->
+        <div class="summary mobile hidden">
+          <h1 class="font-bold text-[3.2rem] mb-6 max-p:mb-4">Finishing up</h1>
+          <p class="text-neutral-cool-gray mb-12 font-medium max-p:mb-8">
+            Double-check everything looks OK before confirming.
+          </p>
+
+          <!-- Summary Start -->
+          <div class="bg-neutral-magnolia p-7 rounded-xl">
+            <!-- Plan -->
+            <div class="plan flex justify-between items-center">
+              <ul>
+                <li class="font-bold">
+                  <span class="summary__plan">Arcade</span>
+                  <span class="month">(Monthly)</span
+                  ><span class="hidden year">(Yearly)</span>
+                </li>
+                <li class="change">Change</li>
+              </ul>
+              <div class="font-bold price">
+                $<span class="month">9/mo</span
+                ><span class="hidden year">90/yr</span>
+              </div>
+            </div>
+
+            <!-- Line -->
+            <div class="h-[1px] w-full bg-neutral-light-gray my-6"></div>
+
+            <div class="summary__add-ons">
+              <!-- Add-ons -->
+              <!-- <ul class="flex justify-between text-2xl font-medium mb-6">
+                <li class="text-neutral-cool-gray">Online service</li>
+                <li>
+                  +$<span class="month">1/mo</span
+                  ><span class="hidden year">10/yr</span>
+                </li>
+              </ul>
+
+              <ul class="flex justify-between text-2xl font-medium mb-6">
+                <li class="text-neutral-cool-gray">Larger storage</li>
+                <li>
+                  +$<span class="month">2/mo</span
+                  ><span class="hidden year">20/yr</span>
+                </li>
+              </ul>
+
+              <ul class="flex justify-between text-2xl font-medium">
+                <li class="text-neutral-cool-gray">Customizable profile</li>
+                <li>
+                  +$<span class="month">2/mo</span
+                  ><span class="hidden year">20/yr</span>
+                </li>
+              </ul> -->
+            </div>
+          </div>
+          <!-- Summary end -->
+
+          <!-- Total start -->
+          <ul
+            class="p-7 flex justify-between text-2xl font-medium items-center"
+          >
+            <li class="text-neutral-cool-gray">
+              Total (per <span class="month">month</span
+              ><span class="hidden year">year</span>)
+            </li>
+            <li
+              class="total text-4xl font-bold text-primary-purplish-blue max-p:text-3xl"
+            >
+              <span class="month"></span>
+              <span class="hidden year"></span>
+            </li>
+          </ul>
+          <!-- Total end -->
+        </div>
+        <!-- Finishing up End -->
+
+        <!-- Pagination Start  -->
+        <div
+          class="pagination flex justify-between items-center mt-auto max-p:absolute max-p:bottom-0 max-p:left-0 max-p:z-10 max-p:w-full max-p:bg-white max-p:p-[4.5vw]"
+        >
+          <!-- flex  -->
+          <button
+            class="font-bold text-neutral-cool-gray hover:text-primary-marine-blue duration-150 prev invisible"
+          >
+            Go Back
+          </button>
+          <button class="btn-p btn-p--confirm hidden">Confirm</button>
+          <button class="btn-p btn-p--next">Next Step</button>
+        </div>
+        <!-- Pagination End  -->
+      </form>
+      <!-- Form End-->
+
+      <!-- Confirmation Start  -->
+      <div
+        class="hidden confirm flex-col items-center justify-center text-center w-[66%] mobile max-p:py-40 max-sp:py-20"
+      >
+        <img class="h-24 w-24 mb-8" src="images/icon-thank-you.svg" alt="" />
+        <h1 class="mb-6 font-bold text-5xl">Thank you!</h1>
+        <p class="w-[70%] text-neutral-cool-gray max-tp:w-[80%]">
+          Thanks for confirming your subscription! We hope you have fun using
+          our platform. If you ever need support, please feel free to email us
+          at support@loremgaming.com.
+        </p>
+      </div>
+      <!-- Confirmation End -->
+    </main>
+
+    <!-- <div class="text-center text-[1.1rem]">
+      Challenge by
+      <a
+        href="https://www.frontendmentor.io?ref=challenge"
+        target="_blank"
+        class="text-footerLink"
+        >Frontend Mentor</a
+      >. Coded by <a href="#" class="text-footerLink">Your Name Here</a>.
+    </div> -->
+  </body>
+</html>
