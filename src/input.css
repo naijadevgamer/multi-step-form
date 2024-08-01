@@ -4,7 +4,7 @@
 
 /* Sidebar  Start*/
 .sidebar {
-  @apply h-full w-[33%] bg-no-repeat bg-cover bg-bottom bg-[url('/images/bg-sidebar-desktop.svg')] rounded-3xl p-16 uppercase max-tp:px-6 max-p:flex max-p:bg-[url('/images/bg-sidebar-mobile.svg')] max-p:bg-top max-p:w-full max-p:rounded-none max-p:h-[60vw] max-p:justify-center;
+  @apply h-full w-[33%] bg-no-repeat bg-cover bg-bottom bg-[url('./images/bg-sidebar-desktop.svg')] rounded-3xl p-16 uppercase max-tp:px-6 max-p:flex max-p:bg-[url('./images/bg-sidebar-mobile.svg')] max-p:bg-top max-p:w-full max-p:rounded-none max-p:h-[60vw] max-p:justify-center;
 }
 .step-wrap {
   @apply flex items-center  max-p:mb-0 max-p:block;
